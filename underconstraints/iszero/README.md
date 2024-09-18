@@ -1,4 +1,4 @@
-# IsZERO
+# IsZero
 
 - build
 
