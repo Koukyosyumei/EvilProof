@@ -9,7 +9,7 @@ template IsZero() {
     signal out;
     signal temp;
     temp <-- in!= 0 ? 0 : 1;
-    out === temp;
+    out <== temp;
 }
 
 component main {public [in]}= IsZero();

@@ -5,7 +5,7 @@ template IsZero() {
     signal out;
     signal temp;
     temp <-- 1;
-    out === temp;
+    out <== temp;
 }
 
 component main {public [in]}= IsZero();
