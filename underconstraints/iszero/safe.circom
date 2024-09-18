@@ -25,4 +25,4 @@ template IsZero() {
     in*out === 0;
 }
 
-component main {public [in]}= IsZero();
+component main = IsZero();

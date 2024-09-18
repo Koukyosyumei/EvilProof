@@ -7,7 +7,7 @@ circom ${TARGET}.circom --r1cs --wasm --sym --c -o build
 # computing the witness
 cd build/${TARGET}_js
 ls
-node generate_witness.js ${TARGET}.wasm ../../mal.json ../${TARGET}_witness.wtns
+node generate_witness.js ${TARGET}.wasm ../../data/1.json ../${TARGET}_witness.wtns
 cd ..
 
 # Generating a Proof
