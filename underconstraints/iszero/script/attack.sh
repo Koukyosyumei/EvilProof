@@ -12,6 +12,3 @@ cd ..
 
 # Generating a Proof
 snarkjs groth16 prove ${VICTIM}_0001.zkey ${TARGET}_witness.wtns ${TARGET}_proof.json ${TARGET}_public.json
-
-# Verifying a Proof
-# snarkjs groth16 verify verification_key.json public.json proof.json
