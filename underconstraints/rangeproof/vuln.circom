@@ -2,6 +2,8 @@ pragma circom 2.0.0;
 
 include "../../circomlib/comparators.circom";
 
+//     2 * max_abs_value >= max_abs_value + in >= 0
+// <=> max_abs_value >= in >= -max_abs_value
 template RangeProof(bits, max_abs_value) {
     signal input in;
 
@@ -16,3 +18,5 @@ template RangeProof(bits, max_abs_value) {
     upperBound.in[1] <== max_abs_value + in;
     upperBound.out === 0
 }
+
+component main = RangeProof(10, 4096);
