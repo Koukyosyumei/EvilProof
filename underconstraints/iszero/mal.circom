@@ -15,4 +15,4 @@ template IsZero() {
     out <== -in*inv +1;
 }
 
-component main {public [in]}= IsZero();
+component main = IsZero();
