@@ -23,3 +23,14 @@ While the division `c = a / b` is not a quadratic equation, we can convert it in
 ## Resource
 
 - [original paper of circom](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10002421)
+
+- [Automated Detection of Under-Constrained Circuits in
+Zero-Knowledge Proofs](https://eprint.iacr.org/2023/512.pdf)
+
+- [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/pdf/2402.15293)
+
+- [Practical Security Analysis of
+Zero-Knowledge Proof Circuits](https://www.usenix.org/system/files/usenixsecurity24-wen_1.pdf)
+
+- [Zero-Knowledge Proof Vulnerability Analysis and
+Security Auditing](https://eprint.iacr.org/2024/514.pdf)
