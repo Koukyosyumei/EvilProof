@@ -39,4 +39,4 @@ template UpperBoundProof(bits, max_abs_value) {
     upperBound.out === 0;
 }
 
-component main = UpperBoundProof(16, 1000);
+component main {public [in]} = UpperBoundProof(16, 1000);
