@@ -1,0 +1,13 @@
+pragma circom 2.0.0;
+
+// reference: https://www.zksecurity.xyz/reports/reclaim
+
+template RotateLeft32Bits(L) {
+    signal input in;
+
+    signal part1 <-- -8589934552;
+    signal part2 <-- 2;
+    (part1 / 2**L) + (part2 * 2**(32-L)) === in;
+}
+
+component main {public [in]} = RotateLeft32Bits(3);
