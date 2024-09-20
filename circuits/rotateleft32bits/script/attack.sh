@@ -1,14 +1,8 @@
 TARGET=$1
 VICTIM=$2
 
-# writing circuits
-circom ${TARGET}.circom --r1cs --wasm --sym --c --O0 -o build
-
 # computing the witness
-cd build/${TARGET}_js
-ls
-node generate_witness.js ${TARGET}.wasm ../../data/input.json ../${TARGET}_witness.wtns
-cd ..
+node ../../script/export_witness.js build/${VICTIM}_js/${VICTIM}.wasm data/${TARGET}_witness.json build/${TARGET}_witness.wasm
 
 # Generating a Proof
-snarkjs groth16 prove ${VICTIM}_0001.zkey ${TARGET}_witness.wtns ${TARGET}_proof.json ${TARGET}_public.json
+snarkjs groth16 prove build/${VICTIM}_0001.zkey build/${TARGET}_witness.wasm build/${TARGET}_proof.json build/${TARGET}_public.json
