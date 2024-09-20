@@ -1,5 +1,7 @@
 # RotateLeft32Bits
 
+The `RotateLeft32Bits` circuit, designed to perform a left rotation on a 32-bit input, contains a critical vulnerability that allows an attacker to manipulate the circuit's behavior.
+
 ## Scripts
 
 - setup
