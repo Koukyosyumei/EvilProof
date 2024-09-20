@@ -22,7 +22,7 @@ template Add32Bits() {
     signal input a;     // First 32-bit input number.
     signal input b;     // Second 32-bit input number.
     signal tmp;         // Temporary signal to store the overflow flag.
-    signal out;         // The 32-bit result of the addition.
+    signal output out;  // The 32-bit result of the addition.
 
     // Check if the sum of 'a' and 'b' exceeds the 32-bit limit (0xFFFFFFFF).
     tmp <-- (a + b) >= (0xFFFFFFFF + 1) ? 1 : 0;
@@ -44,4 +44,4 @@ template Add32Bits() {
  * @input {signal} b - The second public input for the addition.
  * @output {signal} out - The 32-bit result of the addition.
  */
-component main {public [a, b]} = Add32Bits();
+component main = Add32Bits();
