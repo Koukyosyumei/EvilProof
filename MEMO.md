@@ -264,7 +264,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 ### Static Analysis
 
-#### [Practical Security Analysis of Zero-Knowledge Proof Circuits (USENIX'24)](https://www.cs.utexas.edu/~isil/zkap.pdf)
+- [Practical Security Analysis of Zero-Knowledge Proof Circuits (USENIX'24)](https://www.cs.utexas.edu/~isil/zkap.pdf)
   
 >Tag: `circom`, `R1CS`, `static analysis`, `under-constrained`
 
@@ -286,7 +286,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 ### Formal Method
 
-#### [Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs (PLDI'23)](https://dl.acm.org/doi/pdf/10.1145/3591282)
+- [Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs (PLDI'23)](https://dl.acm.org/doi/pdf/10.1145/3591282)
 
 >Tag: `circom`, `R1CS`, `formal method`, `SMT-solver`, `under-constrained`
 
@@ -300,11 +300,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 </details>
 
-#### [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
-
-#### [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
-
-#### [Certifying Zero-Knowledge Circuits with Refinement Types (S&P'24)](https://eprint.iacr.org/2023/547.pdf)
+- [Certifying Zero-Knowledge Circuits with Refinement Types (S&P'24)](https://eprint.iacr.org/2023/547.pdf)
 
 >Tag: `DSL`, `R1CS`, `Formal Method`
 
@@ -316,7 +312,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 </details>
 
-#### [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications (IACR'21)](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
+- [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications (IACR'21)](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
 
 >Tag: `DSL`, `R1CS`, `Formal Method`
 
@@ -326,19 +322,31 @@ In this example, the division operation c = a / b is computed separately, while 
 
 </details>
 
+- [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
+
+<details>
+
+</details>
+
+- [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
+
+<details>
+
+</details>
+
 ### SMT Solver for Finite Fields
 
-#### [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
+- [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
 
-#### [Satisfiability Modulo Finite Fields](https://link.springer.com/content/pdf/10.1007/978-3-031-37703-7_8.pdf)
+- [Satisfiability Modulo Finite Fields](https://link.springer.com/content/pdf/10.1007/978-3-031-37703-7_8.pdf)
 
-#### [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
+- [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
 
 ### SoK
 
-#### [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/pdf/2402.15293)
+- [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/pdf/2402.15293)
 
-#### [Zero-Knowledge Proof Vulnerability Analysis and Security Auditing](https://eprint.iacr.org/2024/514.pdf)
+- [Zero-Knowledge Proof Vulnerability Analysis and Security Auditing](https://eprint.iacr.org/2024/514.pdf)
 
 ### TODO
 
