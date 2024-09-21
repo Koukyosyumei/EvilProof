@@ -272,9 +272,9 @@ In this example, the division operation c = a / b is computed separately, while 
 
 *Overview*: This paper presents **ZKAP**, the heuristic-based tool for detecting common vulnerabilities in Circom, a popular DSL for building zero-knowledge proof (ZKP) circuits. The design of ZKAP is based on a manual study of existing Circom vulnerabilities, which helped classify the root causes of bugs into three main categories:
 
-- Nondeterministic signals: Input or output signals are not properly constrained.
-- Unsafe component usage: Components are used incorrectly, leading to signal errors.
-- Constraint-computation discrepancies: Mismatches occur between witness generation and constraint enforcement like under/over constraints.
+1. Nondeterministic signals: Input or output signals are not properly constrained.
+2. Unsafe component usage: Components are used incorrectly, leading to signal errors.
+3. Constraint-computation discrepancies: Mismatches occur between witness generation and constraint enforcement like under/over constraints.
 
 *Threat Model*: The analysis assumes a trustless environment where attackers have full access to public information, including blockchain states, deployed smart contracts, and ZK circuit source code. Attackers can also deploy their own contracts and ZK applications to interact with the target system.
 
