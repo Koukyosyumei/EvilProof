@@ -266,7 +266,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [Practical Security Analysis of Zero-Knowledge Proof Circuits (USENIX'24)](https://www.cs.utexas.edu/~isil/zkap.pdf)
   
->Tag: `circom`, `R1CS`, `static analysis`, `under-constrained`
+>Tag: {Type: `static analysis`, DSL:`circom`, Arithmetization:`R1CS`, Target:`under-constrainted`}
 
 <details>
 
@@ -292,7 +292,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs (PLDI'23)](https://dl.acm.org/doi/pdf/10.1145/3591282)
 
->Tag: `circom`, `R1CS`, `formal method`, `SMT-solver`, `under-constrained`
+>Tag: {Type: `formal method`, DSL:`circom`, Arithmetization:`R1CS`, Target:`under-constrainted`, Others:`[SMT-solver]`}
 
 <details>
 
@@ -306,7 +306,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [Certifying Zero-Knowledge Circuits with Refinement Types (S&P'24)](https://eprint.iacr.org/2023/547.pdf)
 
->Tag: `DSL`, `R1CS`, `Formal Method`
+>Tag: {Type: `Formal Method`, DSL: `New DSL`, Arithmetization: `R1CS`}
 
 <details>
 
@@ -318,7 +318,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications (IACR'21)](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
 
->Tag: `DSL`, `R1CS`, `Formal Method`
+>Tag: {Type: `Formal Method`, DSL: `New DSL`, Arithmetization: `R1CS`}
 
 <details>
 
@@ -328,7 +328,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
 
->Tag: `DSL`, `Plonkish`, `Formal Method`
+>Tag: {Type: `Formal Method`, DSL: `New DSL`, Arithmetization: `Plonkish`}
 
 <details>
 
