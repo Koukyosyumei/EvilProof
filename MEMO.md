@@ -266,7 +266,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [Practical Security Analysis of Zero-Knowledge Proof Circuits (USENIX'24)](https://www.cs.utexas.edu/~isil/zkap.pdf)
   
->Tag: {Type: `static analysis`, DSL:`circom`, Arithmetization:`R1CS`, Target:`under-constrainted`}
+>Tag: {Type: `static analysis`, DSL:`circom`, Arithmetization:`R1CS`, Target:`circuit (under-constrainted)`}
 
 <details>
 
@@ -290,9 +290,11 @@ In this example, the division operation c = a / b is computed separately, while 
 
 ### Formal Method
 
+#### Verification of Circuit
+
 - [Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs (PLDI'23)](https://dl.acm.org/doi/pdf/10.1145/3591282)
 
->Tag: {Type: `formal method`, DSL:`circom`, Arithmetization:`R1CS`, Target:`under-constrainted`, Others:`[SMT-solver]`}
+>Tag: {Type: `formal method`, DSL:`circom`, Arithmetization:`R1CS`, Target:`circuit (under-constrainted)`, Others:`[SMT-solver]`}
 
 <details>
 
@@ -306,7 +308,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [Certifying Zero-Knowledge Circuits with Refinement Types (S&P'24)](https://eprint.iacr.org/2023/547.pdf)
 
->Tag: {Type: `Formal Method`, DSL: `New DSL`, Arithmetization: `R1CS`}
+>Tag: {Type: `formal method`, DSL: `New DSL`, Arithmetization: `R1CS`}
 
 <details>
 
@@ -318,7 +320,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications (IACR'21)](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
 
->Tag: {Type: `Formal Method`, DSL: `New DSL`, Arithmetization: `R1CS`}
+>Tag: {Type: `formal method`, DSL: `New DSL`, Arithmetization: `R1CS`}
 
 <details>
 
@@ -328,7 +330,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
 
->Tag: {Type: `Formal Method`, DSL: `New DSL`, Arithmetization: `Plonkish`}
+>Tag: {Type: `formal method`, DSL: `New DSL`, Arithmetization: `Plonkish`, Target:`circuit`}
 
 <details>
 
@@ -344,7 +346,39 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 </details>
 
+- [Compositional Formal Verification of Zero-Knowledge Circuits](https://eprint.iacr.org/2023/1278.pdf)
+
+- [Formal Verification of Zero-Knowledge Circuits](https://arxiv.org/pdf/2311.08858)
+
+- [Scalable Verification of Zero-Knowledge Protocols (S&P'24)](https://www.computer.org/csdl/proceedings-article/sp/2024/313000a133/1Ub23QzVaWA)
+
+- [Automated Analysis of Halo2 Circuits](https://eprint.iacr.org/2023/1051.pdf)
+
+#### Verification of Compilier
+
+- [Bounded Verification for Finite-Field-Blasting](https://link.springer.com/content/pdf/10.1007/978-3-031-37709-9_8.pdf)
+
+>Tag: {Type: `formal method`, Target: `compilier`}
+
+<details>
+
+***Overview***: This paper addresses ZKP compiler correctness by partially verifying the field-blasting compiler pass, which translates Boolean and bitvector logic into finite field operations. The contributions of this paper include:
+
+1. Correctness Definition: It introduces a precise correctness definition for ZKP compilers, ensuring that the compiler preserves the soundness and completeness of the underlying ZK proof system. Specifically, if a ZK proof system is specified in a low-level language (L) and compiled from a high-level language (H) to L, the compiler must maintain these properties for statements in H. The definition is also compositional, meaning proving correctness for each compiler pass suffices to prove correctness for the whole compiler.
+
+2. Verifiable Field-Blaster Architecture: The paper presents an architecture for a verifiable field-blaster, consisting of a set of encoding rules. It provides verification conditions (VCs) for these rules, and shows that if the VCs hold, the field-blaster is correct. These conditions can be automatically checked (in bounded form), reducing both the initial and ongoing costs of verification.
+
+</details>
+
+#### Verification of Verifier
+
 - [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
+
+#### Fiat-Shamir Transform
+
+- [Weak Fiat-Shamir Attacks on Modern Proof Systems](https://eprint.iacr.org/2023/691.pdf)
+  
+- [The Last Challenge Attack: Exploiting a Vulnerable Implementation of the Fiat-Shamir Transform in a KZG-based SNARK](https://eprint.iacr.org/2024/398)
 
 ### SMT Solver for Finite Fields
 
@@ -360,21 +394,7 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 - [Zero-Knowledge Proof Vulnerability Analysis and Security Auditing](https://eprint.iacr.org/2024/514.pdf)
 
-### TODO
 
-- [Weak Fiat-Shamir Attacks on Modern Proof Systems](https://eprint.iacr.org/2023/691.pdf)
-
-- [Scalable Verification of Zero-Knowledge Protocols](https://www.computer.org/csdl/proceedings-article/sp/2024/313000a133/1Ub23QzVaWA)
-
-- [The Last Challenge Attack: Exploiting a Vulnerable Implementation of the Fiat-Shamir Transform in a KZG-based SNARK](https://eprint.iacr.org/2024/398)
-
-- [Compositional Formal Verification of Zero-Knowledge Circuits](https://eprint.iacr.org/2023/1278.pdf)
-
-- [Formal Verification of Zero-Knowledge Circuits](https://arxiv.org/pdf/2311.08858)
-
-- [Automated Analysis of Halo2 Circuits](https://eprint.iacr.org/2023/1051.pdf)
-
-- [Bounded Verification for Finite-Field-Blasting](https://link.springer.com/content/pdf/10.1007/978-3-031-37709-9_8.pdf)
 
 ## 9. Resource
 
