@@ -446,3 +446,4 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 | **Blogs** | The State of Security Tools for ZKPs | [Link](https://www.zksecurity.xyz/blog/posts/zksecurity-tools/) |
 |           | A beginner's intro to coding zero-knowledge proofs| [Link](https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56) |
 |           | Arithmetization schemes for ZK-SNARKs | [Link](https://blog.lambdaclass.com/arithmetization-schemes-for-zk-snarks/) |
+|           | Medjai: Protecting Cairo code from Bugs| [Link](https://medium.com/veridise/medjai-protecting-cairo-code-from-bugs-d82ec852cd45) |
