@@ -119,16 +119,53 @@ template Divider() {
 
 In this example, the division operation c = a / b is computed separately, while the constraint a === b * c ensures the correctness of the result within the quadratic constraint system. Such **deviant between the computation and the constraint** sometimes lead to under/over constraints vulnerabilities.
 
+## Papers
+
+- [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/pdf/2402.15293)
+
+
+- [Zero-Knowledge Proof Vulnerability Analysis and Security Auditing](https://eprint.iacr.org/2024/514.pdf)
+
+- [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
+
+- [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
+
+- [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
+
+- [Weak Fiat-Shamir Attacks on Modern Proof Systems](https://eprint.iacr.org/2023/691.pdf)
+
+- [SNARKProbe: An Automated Security Analysis Framework for zkSNARK Implementations](https://link.springer.com/chapter/10.1007/978-3-031-54773-7_14)
+
+- [Scalable Verification of Zero-Knowledge Protocols](https://www.computer.org/csdl/proceedings-article/sp/2024/313000a133/1Ub23QzVaWA)
+
+- [The Last Challenge Attack: Exploiting a Vulnerable Implementation of the Fiat-Shamir Transform in a KZG-based SNARK](https://eprint.iacr.org/2024/398)
+
+- [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
+
+- [Satisfiability Modulo Finite Fields](https://link.springer.com/content/pdf/10.1007/978-3-031-37703-7_8.pdf)
+
+- [Compositional Formal Verification of Zero-Knowledge Circuits](https://eprint.iacr.org/2023/1278.pdf)
+
+- [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
+
+- [Formal Verification of Zero-Knowledge Circuits](https://arxiv.org/pdf/2311.08858)
+
+- [Automated Analysis of Halo2 Circuits](https://eprint.iacr.org/2023/1051.pdf)
+
+- [Bounded Verification for Finite-Field-Blasting](https://link.springer.com/content/pdf/10.1007/978-3-031-37709-9_8.pdf)
+
+- [Certifying Zero-Knowledge Circuits with Refinement Types](https://eprint.iacr.org/2023/547.pdf)
+
+- [Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs](https://dl.acm.org/doi/pdf/10.1145/3591282)
+
+- [Practical Security Analysis of Zero-Knowledge Proof Circuits](https://www.cs.utexas.edu/~isil/zkap.pdf)
+
 ## Resource
 
 ### Papers
 
 | **Category** | **Title** | **Link** |
 |--------------|-----------|----------|
-| **Papers** | Original Paper of Circom | [Link](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10002421) |
-|  | Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs | [Link](https://eprint.iacr.org/2023/512.pdf) |
-|  | SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs | [Link](https://arxiv.org/pdf/2402.15293) |
-|  | Practical Security Analysis of Zero-Knowledge Proof Circuits | [Link](https://www.usenix.org/system/files/usenixsecurity24-wen_1.pdf) |
 |  | Zero-Knowledge Proof Vulnerability Analysis and Security Auditing | [Link](https://eprint.iacr.org/2024/514.pdf) |
 | **Repos** | Awesome Zero-Knowledge Proofs Security | [Link](https://github.com/Xor0v0/awesome-zero-knowledge-proofs-security?tab=readme-ov-file) |
 |  | Awesome ZKP Security | [Link](https://github.com/StefanosChaliasos/Awesome-ZKP-Security?tab=readme-ov-file) |
