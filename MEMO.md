@@ -1,40 +1,168 @@
 # Zero-Knowledge Proof (ZKP) Development and Security
 
-## Architecture of ZKP Systems
+## Core Concepts
 
-ZKP systems are typically structured in four layers, each serving a distinct purpose in the development and implementation process:
+### *Zero-Knowledge Proofs (ZKPs)*
+
+Zero-knowledge proofs are a cryptographic method that allows one party (the prover) to prove to another party (the verifier) that they know a piece of information, without revealing the information itself. ZKPs have three key properties:
+
+- *Completeness*: An honest prover can convince an honest verifier of a true statement.
+- *Soundness*: A dishonest prover cannot convince the verifier of a false statement.
+- *Zero-knowledge*: The verifier learns nothing beyond the truth of the statement.
+
+Real-world applications of ZKPs include:
+
+- Identity verification without disclosing personal data
+- Proving sufficient funds for a transaction without revealing the exact balance
+- Validating blockchain transactions while maintaining privacy
+
+### *zk-SNARKs*
+
+zk-SNARK (Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) is a popular type of ZKP with two distinguishing features:
+
+- **Succinct**: Proofs are small and quick to verify, regardless of the statement's complexity.
+- **Non-interactive**: The proof requires only one message from prover to verifier.
+
+Notable zk-SNARK variants include:
+
+- **Groth16**: Requires a trusted setup for each circuit.
+- **PLONK**: Can use one trusted setup for multiple circuits.
+
+### Key Concepts in ZKP Implementation
+
+#### Constraints
+
+In ZKP systems, statements are represented as constraints rather than instructions. Different implementations support various types of constraints:
+
+- [Circom](https://docs.circom.io/) supports quadratic expressions
+- [Halo2](https://zcash.github.io/halo2/) allows polynomial constraints of any degree
+
+#### Finite fields
+
+ZKP arithmetic operates in finite fields, with the field size determined by the underlying elliptic curve. This means all operations are computed modulo a specific value.
+
+## ZKP System Architecture
+
+ZKP systems typically consist of four layers:
+
+1. **Circuit Layer**: Developers create the logic using DSLs/eDSLs like Circom or Halo2.
+2. **Frontend Layer**: Compiles the circuit into constraints and generates witnesses.
+3. **Backend Layer**: Implements core SNARK functions (Setup, Prove, Verify).
+4. **Integration Layer**: Connects the ZKP system with external applications.
 
 ### Circuit Layer
 
-At the foundation lies the Circuit Layer, where developers craft the logic of their ZKP application. This is done using Domain-Specific Languages (DSLs) or embedded DSLs like Circom or Halo2. The circuits created here serve two crucial functions:
+At the base of any ZKP system is the Circuit Layer, where developers define the core logic of the proof system. This is achieved using DSLs, such as Circom or Halo2, which allow the creation of circuits that represent computations. These circuits serve two main purposes
 
-1. Computing output values
-2. Constructing constraints for the input witness
+1. To compute output values from inputs.
+2. To define constraints on the witness, which is a representation of all intermediate and output values for a given input.
 
 ### Frontend Layer
 
-The Frontend Layer acts as an intermediary, processing the circuit created in the layer below. Its primary functions include:
+The Frontend Layer acts as the intermediary between the logic defined in the Circuit Layer and the rest of the ZKP system. Its key responsibilities include:
 
-- Compilation: Transforms the circuit into a set of constraints, often in an arithmetization format such as R1CS (Rank-1 Constraint System).
+- Compilation: Translates the circuit into constraints, typically in a format such as R1CS (Rank-1 Constraint System), which is used to define the relationships between variables in a way that can be proved in zero-knowledge.
 
-- Witness Generation: Produces a witness based on the circuit's logic, taking both public and private inputs into account.
+- Witness Generation: Produces a witness based on both public and private inputs. The witness is a set of concrete values that satisfy the circuit's constraints for a given input.
 
-For instance, the Circom compiler supports this type of witness generation.
+For instance, Circom’s compiler can transform a circuit into its corresponding R1CS form and generate the witness based on the provided inputs.
 
 ### Backend Layer
 
-The Backend Layer implements the core functions of a SNARK (Succinct Non-Interactive Argument of Knowledge). Tools like the snarkjs toolchain provide three main functionalities:
+The Backend Layer is responsible for the core functionality of the zero-knowledge proof system. This layer is where key cryptographic operations take place. Using tools like the snarkjs toolchain, the following primary tasks are performed:
 
-- Setup: Initializes the proving system
-- Prove: Generates proofs
-- Verify: Validates the generated proofs
+- Setup: Initializes the proving system, which may include generating cryptographic parameters (for example, with a trusted setup in systems like Groth16).
+- Prove: Generates a proof based on the witness and the circuit's constraints, without revealing any sensitive information.
+- Verify: Validates that a given proof is correct and that the input satisfies the circuit’s constraints.
 
 ### Integration Layer
 
-The topmost layer, the Integration Layer, bridges the ZKP system with external applications. For example, it might include smart contracts that interact with on-chain verifiers to:
+t the top, the Integration Layer connects the ZKP system with external applications or platforms. This could involve integrating with smart contracts, decentralized applications, or traditional systems. In a blockchain context, smart contracts might verify proofs and take actions based on the results of the verification.
 
-- Verify submitted proofs
-- Implement logic based on the verification outcome
+For example, a smart contract could use an on-chain verifier to:
+
+- Validate a submitted proof.
+- Trigger contract logic based on whether the proof is valid.
+
+## Implementing a ZKP System: A Practical Example
+
+Let's walk through the process of implementing a simple ZKP system using the `IsZero` circuit, which checks if an input is zero or non-zero.
+
+### 1. Circuit Implementation (using Circom)
+
+```
+template IsZero() {
+    signal input in;    // Input signal to check if it's zero or non-zero.
+    signal output out;  // Output signal: 1 if `in == 0`, 0 if `in != 0`.
+    signal inv;         // Inverse of the input when `in != 0`, or 0 when `in == 0`.
+    
+    // Compute the inverse: if `in` is non-zero, `inv` is set to `1/in`, otherwise it's 0.
+    inv <-- in!=0 ? 1/in : 0;
+
+    // Constraint 1: Ensures that if `in != 0`, `out` is 0. If `in == 0`, `out` is 1.
+    out <== -in*inv +1;
+
+    // Constraint 2: Ensures that `in * out == 0`, forcing the output to 1 only when `in == 0`.
+    in*out === 0;
+}
+
+// there is no public input
+component main = IsZero();
+```
+
+### 2. Compilation
+
+Compile the circuit using Circom, which generates the necessary constraint system and related files:
+
+```bash
+circom iszero.circom --r1cs --wasm --sym --c
+```
+
+This step translates the circuit into its R1CS form and creates files necessary for generating witnesses and proving the circuit.
+
+### 3. Trusted Setup (if required)
+
+In protocols like Groth16, a trusted setup is required. This involves generating the proving and verifying keys.
+
+```bash
+snarkjs powersoftau new bn128 12 pot12_0000.ptau -v
+snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First contribution" -v
+```
+
+### 4. Witness Generation
+
+The witness is a set of intermediate and output values for a given input, which will later be used to generate the proof:
+
+```bash
+node iszero_js/generate_witness.js iszero.wasm input.json iszero_witness.wtns
+```
+
+For Groth16, we also perform a circuit-specific setup:
+
+```bash
+snarkjs powersoftau prepare phase2 pot12_0001.ptau pot12_final.ptau -v
+snarkjs groth16 setup iszero.r1cs pot12_final.ptau iszero_0000.zkey
+snarkjs zkey contribute iszero_0000.zkey iszero_0001.zkey --name="1st Contributor Name" -v
+snarkjs zkey export verificationkey iszero_0001.zkey iszero_verification_key.json
+```
+
+### 5. Proof Generation
+
+After generating the witness, we can produce the zero-knowledge proof using Groth16 or another SNARK protocol:
+
+```bash
+snarkjs groth16 prove iszero_0001.zkey iszero_witness.wtns iszero_proof.json iszero_public.json
+```
+
+### 6. Verification
+
+Finally, the proof can be verified using the verification key and public inputs:
+
+```bash
+snarkjs groth16 verify iszero_verification_key.json iszero_public.json iszero_proof.json
+```
+
+If the proof is valid, the system confirms that the provided input satisfies the `IsZero` circuit logic, ensuring correctness without revealing sensitive information.
 
 ## Security Considerations in ZKP Systems
 
@@ -54,6 +182,7 @@ When evaluating the security of ZKP systems, three primary concerns emerge:
 
 - Threat: Information leakage about the private witness.
 - Impact: Violates privacy guarantees, potentially exposing sensitive data.
+
 
 ## Common Vulnerabilities in ZKP Circuits
 
@@ -171,3 +300,4 @@ In this example, the division operation c = a / b is computed separately, while 
 |  | Awesome ZKP Security | [Link](https://github.com/StefanosChaliasos/Awesome-ZKP-Security?tab=readme-ov-file) |
 |  | Picus | [Link](https://github.com/chyanju/Picus) |
 | **Blogs** | The State of Security Tools for ZKPs | [Link](https://www.zksecurity.xyz/blog/posts/zksecurity-tools/) |
+|           | A beginner's intro to coding zero-knowledge proofs| [Link](https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56) |
