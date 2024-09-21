@@ -1,8 +1,8 @@
 # Zero-Knowledge Proof (ZKP) Development and Security
 
-## Core Concepts
+## 1. Core Concepts
 
-### *Zero-Knowledge Proofs (ZKPs)*
+### 1.1 *Zero-Knowledge Proofs (ZKPs)*
 
 Zero-knowledge proofs are a cryptographic method that allows one party (the prover) to prove to another party (the verifier) that they know a piece of information, without revealing the information itself. ZKPs have three key properties:
 
@@ -16,7 +16,7 @@ Real-world applications of ZKPs include:
 - Proving sufficient funds for a transaction without revealing the exact balance
 - Validating blockchain transactions while maintaining privacy
 
-### *zk-SNARKs*
+### 1.2 *zk-SNARKs*
 
 zk-SNARK (Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) is a popular type of ZKP with two distinguishing features:
 
@@ -28,20 +28,20 @@ Notable zk-SNARK variants include:
 - **Groth16**: Requires a trusted setup for each circuit.
 - **PLONK**: Can use one trusted setup for multiple circuits.
 
-### Key Concepts in ZKP Implementation
+### 1.3 Key Concepts in ZKP Implementation
 
-#### Constraints
+1. *Constraints*
 
 In ZKP systems, statements are represented as constraints rather than instructions. Different implementations support various types of constraints:
 
 - [Circom](https://docs.circom.io/) supports quadratic expressions
 - [Halo2](https://zcash.github.io/halo2/) allows polynomial constraints of any degree
 
-#### Finite fields
+2. *Finite fields*
 
 ZKP arithmetic operates in finite fields, with the field size determined by the underlying elliptic curve. This means all operations are computed modulo a specific value.
 
-## ZKP System Architecture
+## 2. ZKP System Architecture
 
 ZKP systems typically consist of four layers:
 
@@ -50,14 +50,14 @@ ZKP systems typically consist of four layers:
 3. **Backend Layer**: Implements core SNARK functions (Setup, Prove, Verify).
 4. **Integration Layer**: Connects the ZKP system with external applications.
 
-### Circuit Layer
+### 2.1 Circuit Layer
 
 At the base of any ZKP system is the Circuit Layer, where developers define the core logic of the proof system. This is achieved using DSLs, such as Circom or Halo2, which allow the creation of circuits that represent computations. These circuits serve two main purposes
 
 1. To compute output values from inputs.
 2. To define constraints on the witness, which is a representation of all intermediate and output values for a given input.
 
-### Frontend Layer
+### 2.2 Frontend Layer
 
 The Frontend Layer acts as the intermediary between the logic defined in the Circuit Layer and the rest of the ZKP system. Its key responsibilities include:
 
@@ -67,7 +67,7 @@ The Frontend Layer acts as the intermediary between the logic defined in the Cir
 
 For instance, Circom’s compiler can transform a circuit into its corresponding R1CS form and generate the witness based on the provided inputs.
 
-### Backend Layer
+### 2.3 Backend Layer
 
 The Backend Layer is responsible for the core functionality of the zero-knowledge proof system. This layer is where key cryptographic operations take place. Using tools like the snarkjs toolchain, the following primary tasks are performed:
 
@@ -75,7 +75,7 @@ The Backend Layer is responsible for the core functionality of the zero-knowledg
 - Prove: Generates a proof based on the witness and the circuit's constraints, without revealing any sensitive information.
 - Verify: Validates that a given proof is correct and that the input satisfies the circuit’s constraints.
 
-### Integration Layer
+### 2.4 Integration Layer
 
 t the top, the Integration Layer connects the ZKP system with external applications or platforms. This could involve integrating with smart contracts, decentralized applications, or traditional systems. In a blockchain context, smart contracts might verify proofs and take actions based on the results of the verification.
 
@@ -84,11 +84,11 @@ For example, a smart contract could use an on-chain verifier to:
 - Validate a submitted proof.
 - Trigger contract logic based on whether the proof is valid.
 
-## Implementing a ZKP System: A Practical Example
+## 3. Implementing a ZKP System: A Practical Example
 
 Let's walk through the process of implementing a simple ZKP system using the `IsZero` circuit, which checks if an input is zero or non-zero.
 
-### 1. Circuit Implementation (using Circom)
+### 3.1. Circuit Implementation (using Circom)
 
 ```
 template IsZero() {
@@ -110,7 +110,7 @@ template IsZero() {
 component main = IsZero();
 ```
 
-### 2. Compilation
+### 3.2. Compilation
 
 Compile the circuit using Circom, which generates the necessary constraint system and related files:
 
@@ -120,7 +120,7 @@ circom iszero.circom --r1cs --wasm --sym --c
 
 This step translates the circuit into its R1CS form and creates files necessary for generating witnesses and proving the circuit.
 
-### 3. Trusted Setup (if required)
+### 3.3. Trusted Setup (if required)
 
 In protocols like Groth16, a trusted setup is required. This involves generating the proving and verifying keys.
 
@@ -129,7 +129,7 @@ snarkjs powersoftau new bn128 12 pot12_0000.ptau -v
 snarkjs powersoftau contribute pot12_0000.ptau pot12_0001.ptau --name="First contribution" -v
 ```
 
-### 4. Witness Generation
+### 3.4. Witness Generation
 
 The witness is a set of intermediate and output values for a given input, which will later be used to generate the proof:
 
@@ -146,7 +146,7 @@ snarkjs zkey contribute iszero_0000.zkey iszero_0001.zkey --name="1st Contributo
 snarkjs zkey export verificationkey iszero_0001.zkey iszero_verification_key.json
 ```
 
-### 5. Proof Generation
+### 3.5. Proof Generation
 
 After generating the witness, we can produce the zero-knowledge proof using Groth16 or another SNARK protocol:
 
@@ -154,7 +154,7 @@ After generating the witness, we can produce the zero-knowledge proof using Grot
 snarkjs groth16 prove iszero_0001.zkey iszero_witness.wtns iszero_proof.json iszero_public.json
 ```
 
-### 6. Verification
+### 3.6. Verification
 
 Finally, the proof can be verified using the verification key and public inputs:
 
@@ -164,50 +164,50 @@ snarkjs groth16 verify iszero_verification_key.json iszero_public.json iszero_pr
 
 If the proof is valid, the system confirms that the provided input satisfies the `IsZero` circuit logic, ensuring correctness without revealing sensitive information.
 
-## Security Considerations in ZKP Systems
+## 4. Security Considerations in ZKP Systems
 
 When evaluating the security of ZKP systems, three primary concerns emerge:
 
-### Soundness
+1. **Soundness**
 
 - Threat: A malicious prover convincing a verifier of a false statement.
 - Impact: Compromises the integrity of the entire system.
 
-### Completeness
+2. **Completeness**
 
 - Threat: Inability to verify valid proofs or produce proofs for valid statements.
 - Impact: Renders the system unreliable or unusable.
 
-### Zero-Knowledge Property
+3. **Zero-Knowledge Property**
 
 - Threat: Information leakage about the private witness.
 - Impact: Violates privacy guarantees, potentially exposing sensitive data.
 
 
-## Common Vulnerabilities in ZKP Circuits
+## 5. Common Vulnerabilities in ZKP Circuits
 
 Most reported ZKP-related vulnerabilities occur in the Circuit Layer and can be categorized as follows:
 
-### Underconstraint Vulnerabilities
+1. **Underconstraint Vulnerabilities**
 
 - Description: Insufficient constraints in the circuit.
 - Impact: Can lead to critical soundness errors, allowing false proofs to be accepted.
 
-### Overconstrained Vulnerabilities
+2. **Overconstrained Vulnerabilities**
 
 - Description: Excessive constraints in the circuit.
 - Impact: May cause rejection of valid witnesses by honest provers or benign proofs by honest verifiers.
 
-### Computation/Hint Errors
+3. **Computation/Hint Errors**
 
 - Description: Errors in the computational part of a circuit.
 - Impact: Can lead to incorrect results or unexpected behavior.
 
-## Analysis Tools for ZKP Systems
+## 6. Analysis Tools for ZKP Systems
 
 Several tools have been developed to analyze and verify ZKP systems:
 
-### Static Analysis Tools
+### 6.1 Static Analysis Tools
 
 These tools rely on pattern matching and heuristics to identify potential issues:
 
@@ -217,11 +217,11 @@ These tools rely on pattern matching and heuristics to identify potential issues
 
 These tools are typically limited to specific vulnerability patterns and support only particular DSLs or eDSLs.
 
-### Dynamic Analysis and Fuzzing
+### 6.2 Dynamic Analysis and Fuzzing
 
 - SnarkProbe: A security analysis framework for SNARKs that can analyze R1CS-based libraries and applications. It detects various issues such as edge case crashing, errors, and inconsistencies.
 
-### Formal Verification Tools
+### 6.3 Formal Verification Tools
 
 These tools provide more rigorous analysis:
 
@@ -232,7 +232,7 @@ These tools provide more rigorous analysis:
 - DSLs like Coda and Leo: Support formal verification of circuits through synthesis.
 - Transpiler from Gnark to Lean: Compiles zero-knowledge circuits from Gnark to the Lean theorem prover for formal verification.
 
-## Circom: A Closer Look
+## 7. Circom: A Closer Look
 
 Circom requires all constraints to be expressed as quadratic equations. However, developers can implement more complex algorithms by separating computation from constraints. For example:
 
@@ -248,7 +248,7 @@ template Divider() {
 
 In this example, the division operation c = a / b is computed separately, while the constraint a === b * c ensures the correctness of the result within the quadratic constraint system. Such **deviant between the computation and the constraint** sometimes lead to under/over constraints vulnerabilities.
 
-## Papers
+## 8. Papers
 
 - [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/pdf/2402.15293)
 
@@ -289,9 +289,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 - [Practical Security Analysis of Zero-Knowledge Proof Circuits](https://www.cs.utexas.edu/~isil/zkap.pdf)
 
-## Resource
-
-### Papers
+## 9. Resource
 
 | **Category** | **Title** | **Link** |
 |--------------|-----------|----------|
