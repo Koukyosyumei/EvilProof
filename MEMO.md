@@ -320,11 +320,11 @@ In this example, the division operation c = a / b is computed separately, while 
 
 >Tag: `DSL`, `R1CS`, `Formal Method`
 
-<detail>
+<details>
 
 *Overview*: LEO is a high-level general-purpose programming language designed for circuit synthesis, particularly for zero-knowledge applications on the Aleo blockchain. It specifically targets R1CS arithmetization, with completeness proven using ACL2, an industrial-strength theorem prover. LEO offers two key benefits: it ensures formal verification of applications against their high-level specifications, and it allows anyone to succinctly verify these applications, regardless of their size.
 
-</detail>
+</details>
 
 ### SMT Solver for Finite Fields
 
