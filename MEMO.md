@@ -41,6 +41,8 @@ In ZKP systems, statements are represented as constraints rather than instructio
 
 ZKP arithmetic operates in finite fields, with the field size determined by the underlying elliptic curve. This means all operations are computed modulo a specific value.
 
+3. *Arithmetization*
+
 ## 2. ZKP System Architecture
 
 ZKP systems typically consist of four layers:
