@@ -234,6 +234,18 @@ These tools provide more rigorous analysis:
 
 ## 7. Circom: A Closer Look
 
+### Signals
+
+Circuits in Circom work with signals, which are elements (or arrays of elements) from a finite field. These signals are declared using the keyword `signal`. Signals can be labeled as either `input` or `output`. If a signal is not explicitly marked as either, it is treated as an intermediate signal. When given an input signal, the witness generator produced by the Circom compiler calculates the values of all intermediate and output signals.
+
+### Operators
+
+The Circom compiler is responsible for generating both the witness calculator program and the Rank-1 Constraint System (R1CS) constraints. To do this, it provides several operators that are used to express both computations (for witness calculation) and constraints (for constraint generation).
+
+For example, the operators `<--` and `-->` are used for signal assignment, which is critical for witness generation. Meanwhile, the `===` operator is used for constraint generation. A statement like `a === b` tells the Circom compiler to generate a circuit that ensures `a` and `b` are equal. Circom offers the additional operators `<==` and `==>`, which perform both assignment and constraint generation at the same time. Note that any constraint in Circom should be a quadratic equation.
+
+### Execution vs Constraints
+
 Circom requires all constraints to be expressed as quadratic equations. However, developers can implement more complex algorithms by separating computation from constraints. For example:
 
 ```
@@ -250,44 +262,58 @@ In this example, the division operation c = a / b is computed separately, while 
 
 ## 8. Papers
 
-- [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/pdf/2402.15293)
+#### [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/pdf/2402.15293)
 
 
-- [Zero-Knowledge Proof Vulnerability Analysis and Security Auditing](https://eprint.iacr.org/2024/514.pdf)
+#### [Zero-Knowledge Proof Vulnerability Analysis and Security Auditing](https://eprint.iacr.org/2024/514.pdf)
 
-- [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
+#### [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
 
-- [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
+#### [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
 
-- [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
+#### [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
 
-- [Weak Fiat-Shamir Attacks on Modern Proof Systems](https://eprint.iacr.org/2023/691.pdf)
+#### [Weak Fiat-Shamir Attacks on Modern Proof Systems](https://eprint.iacr.org/2023/691.pdf)
 
-- [SNARKProbe: An Automated Security Analysis Framework for zkSNARK Implementations](https://link.springer.com/chapter/10.1007/978-3-031-54773-7_14)
+#### [SNARKProbe: An Automated Security Analysis Framework for zkSNARK Implementations](https://link.springer.com/chapter/10.1007/978-3-031-54773-7_14)
 
-- [Scalable Verification of Zero-Knowledge Protocols](https://www.computer.org/csdl/proceedings-article/sp/2024/313000a133/1Ub23QzVaWA)
+#### [Scalable Verification of Zero-Knowledge Protocols](https://www.computer.org/csdl/proceedings-article/sp/2024/313000a133/1Ub23QzVaWA)
 
-- [The Last Challenge Attack: Exploiting a Vulnerable Implementation of the Fiat-Shamir Transform in a KZG-based SNARK](https://eprint.iacr.org/2024/398)
+#### [The Last Challenge Attack: Exploiting a Vulnerable Implementation of the Fiat-Shamir Transform in a KZG-based SNARK](https://eprint.iacr.org/2024/398)
 
-- [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
+#### [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
 
-- [Satisfiability Modulo Finite Fields](https://link.springer.com/content/pdf/10.1007/978-3-031-37703-7_8.pdf)
+#### [Satisfiability Modulo Finite Fields](https://link.springer.com/content/pdf/10.1007/978-3-031-37703-7_8.pdf)
 
-- [Compositional Formal Verification of Zero-Knowledge Circuits](https://eprint.iacr.org/2023/1278.pdf)
+#### [Compositional Formal Verification of Zero-Knowledge Circuits](https://eprint.iacr.org/2023/1278.pdf)
 
-- [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
+#### [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
 
-- [Formal Verification of Zero-Knowledge Circuits](https://arxiv.org/pdf/2311.08858)
+#### [Formal Verification of Zero-Knowledge Circuits](https://arxiv.org/pdf/2311.08858)
 
-- [Automated Analysis of Halo2 Circuits](https://eprint.iacr.org/2023/1051.pdf)
+#### [Automated Analysis of Halo2 Circuits](https://eprint.iacr.org/2023/1051.pdf)
 
-- [Bounded Verification for Finite-Field-Blasting](https://link.springer.com/content/pdf/10.1007/978-3-031-37709-9_8.pdf)
+#### [Bounded Verification for Finite-Field-Blasting](https://link.springer.com/content/pdf/10.1007/978-3-031-37709-9_8.pdf)
 
-- [Certifying Zero-Knowledge Circuits with Refinement Types](https://eprint.iacr.org/2023/547.pdf)
+#### [Certifying Zero-Knowledge Circuits with Refinement Types](https://eprint.iacr.org/2023/547.pdf)
 
-- [Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs](https://dl.acm.org/doi/pdf/10.1145/3591282)
+#### [Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs](https://dl.acm.org/doi/pdf/10.1145/3591282)
 
-- [Practical Security Analysis of Zero-Knowledge Proof Circuits](https://www.cs.utexas.edu/~isil/zkap.pdf)
+#### [Practical Security Analysis of Zero-Knowledge Proof Circuits](https://www.cs.utexas.edu/~isil/zkap.pdf)
+  
+>Tag: `circom`, `static analysis`
+
+This paper presents **ZKAP**, the heuristic-based tool for detecting common vulnerabilities in Circom, a popular DSL for building zero-knowledge proof (ZKP) circuits. The design of ZKAP is based on a manual study of existing Circom vulnerabilities, which helped classify the root causes of bugs into three main categories:
+
+- Nondeterministic signals: Input or output signals are not properly constrained.
+- Unsafe component usage: Components are used incorrectly, leading to signal errors.
+- Constraint-computation discrepancies: Mismatches occur between witness generation and constraint enforcement.
+
+To detect these vulnerabilities, the authors introduced the *circuit dependence graph (CDG)*, an abstraction that captures key properties of Circom circuits to identify semantic vulnerability patterns. ZKAP uses this graph to implement static checkers that detect vulnerabilities through anti-patterns described in a Datalog-style language.
+
+The tool was evaluated on 258 Circom circuits from popular projects on GitHub, achieving an F1 score of 0.82.
+
+Threat Model: The analysis assumes a trustless environment where attackers have full access to public information, including blockchain states, deployed smart contracts, and ZK circuit source code. Attackers can also deploy their own contracts and ZK applications to interact with the target system.
 
 ## 9. Resource
 
