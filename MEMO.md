@@ -211,7 +211,7 @@ Several tools have been developed to analyze and verify ZKP systems:
 
 These tools rely on pattern matching and heuristics to identify potential issues:
 
-- Circomspect: Static analyzer for Circom
+- [Circomspect](https://github.com/trailofbits/circomspect): Static analyzer for Circom
 - ZKAP: Another static analyzer for Circom
 - halo2-analyzer: Static analyzer for Halo2
 
@@ -262,15 +262,11 @@ In this example, the division operation c = a / b is computed separately, while 
 
 ## 8. Papers
 
-### SoK
-
-#### [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/pdf/2402.15293)
-
 ### Static Analysis
 
 #### [Practical Security Analysis of Zero-Knowledge Proof Circuits (USENIX'24)](https://www.cs.utexas.edu/~isil/zkap.pdf)
   
->Tag: `circom`, `static analysis`, `under-constrained`
+>Tag: `circom`, `R1CS`, `static analysis`, `under-constrained`
 
 <details>
 
@@ -292,7 +288,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 #### [Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs (PLDI'23)](https://dl.acm.org/doi/pdf/10.1145/3591282)
 
->Tag: `circom`, `formal method`, `SMT-solver`, `under-constrained`
+>Tag: `circom`, `R1CS`, `formal method`, `SMT-solver`, `under-constrained`
 
 <details>
 
@@ -304,6 +300,22 @@ In this example, the division operation c = a / b is computed separately, while 
 
 </details>
 
+#### [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
+
+#### [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
+
+#### [Certifying Zero-Knowledge Circuits with Refinement Types (S&P'24)](https://eprint.iacr.org/2023/547.pdf)
+
+>Tag: `DSL`, `R1CS`, `Formal Method`
+
+<details>
+
+*overview*: This paper introduces CODA, a statically-typed language for building zero-knowledge applications. CODA allows developers to formally specify and verify properties of ZK applications using a powerful refinement type system. A major challenge in verifying ZK applications is reasoning about polynomial equations over large prime fields, which are often beyond the reach of automated theorem provers. CODA addresses this by generating Coq lemmas that can be interactively proven using a tactic library.
+
+*Experiment*: The authors evaluated CODA on 77 ZK circuits from 9 widely-used libraries and projects in Circom. Because CODA is sound, any bugs in the program will result in unprovable lemmas in Coq. During testing, 6 benchmarks failed to discharge their proof obligations, leading to the discovery of subtle, previously unknown correctness bugs in the original Circom circuits.
+
+</details>
+
 ### SMT Solver for Finite Fields
 
 #### [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
@@ -312,13 +324,13 @@ In this example, the division operation c = a / b is computed separately, while 
 
 #### [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
 
-### TODO
+### SoK
+
+#### [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs](https://arxiv.org/pdf/2402.15293)
 
 #### [Zero-Knowledge Proof Vulnerability Analysis and Security Auditing](https://eprint.iacr.org/2024/514.pdf)
 
-#### [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
-
-#### [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
+### TODO
 
 #### [Weak Fiat-Shamir Attacks on Modern Proof Systems](https://eprint.iacr.org/2023/691.pdf)
 
@@ -338,8 +350,6 @@ In this example, the division operation c = a / b is computed separately, while 
 
 #### [Bounded Verification for Finite-Field-Blasting](https://link.springer.com/content/pdf/10.1007/978-3-031-37709-9_8.pdf)
 
-#### [Certifying Zero-Knowledge Circuits with Refinement Types](https://eprint.iacr.org/2023/547.pdf)
-
 ## 9. Resource
 
 | **Category** | **Title** | **Link** |
@@ -350,3 +360,4 @@ In this example, the division operation c = a / b is computed separately, while 
 |  | Picus | [Link](https://github.com/chyanju/Picus) |
 | **Blogs** | The State of Security Tools for ZKPs | [Link](https://www.zksecurity.xyz/blog/posts/zksecurity-tools/) |
 |           | A beginner's intro to coding zero-knowledge proofs| [Link](https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56) |
+|           | Arithmetization schemes for ZK-SNARKs | [Link](https://blog.lambdaclass.com/arithmetization-schemes-for-zk-snarks/) |
