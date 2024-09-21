@@ -303,17 +303,17 @@ In this example, the division operation c = a / b is computed separately, while 
   
 >Tag: `circom`, `static analysis`
 
-This paper presents **ZKAP**, the heuristic-based tool for detecting common vulnerabilities in Circom, a popular DSL for building zero-knowledge proof (ZKP) circuits. The design of ZKAP is based on a manual study of existing Circom vulnerabilities, which helped classify the root causes of bugs into three main categories:
+*Overview*: This paper presents **ZKAP**, the heuristic-based tool for detecting common vulnerabilities in Circom, a popular DSL for building zero-knowledge proof (ZKP) circuits. The design of ZKAP is based on a manual study of existing Circom vulnerabilities, which helped classify the root causes of bugs into three main categories:
 
 - Nondeterministic signals: Input or output signals are not properly constrained.
 - Unsafe component usage: Components are used incorrectly, leading to signal errors.
 - Constraint-computation discrepancies: Mismatches occur between witness generation and constraint enforcement.
 
-To detect these vulnerabilities, the authors introduced the *circuit dependence graph (CDG)*, an abstraction that captures key properties of Circom circuits to identify semantic vulnerability patterns. ZKAP uses this graph to implement static checkers that detect vulnerabilities through anti-patterns described in a Datalog-style language.
+*Threat Model*: The analysis assumes a trustless environment where attackers have full access to public information, including blockchain states, deployed smart contracts, and ZK circuit source code. Attackers can also deploy their own contracts and ZK applications to interact with the target system.
 
-The tool was evaluated on 258 Circom circuits from popular projects on GitHub, achieving an F1 score of 0.82.
+*Method*: To detect these vulnerabilities, the authors introduced the *circuit dependence graph (CDG)*, an abstraction that captures key properties of Circom circuits to identify semantic vulnerability patterns. ZKAP uses this graph to implement static checkers that detect vulnerabilities through anti-patterns described in a Datalog-style language.
 
-Threat Model: The analysis assumes a trustless environment where attackers have full access to public information, including blockchain states, deployed smart contracts, and ZK circuit source code. Attackers can also deploy their own contracts and ZK applications to interact with the target system.
+*Experiment*: The tool was evaluated on 258 Circom circuits from popular projects on GitHub, achieving an F1 score of 0.82.
 
 ## 9. Resource
 
