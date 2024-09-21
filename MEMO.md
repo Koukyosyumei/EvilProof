@@ -284,9 +284,13 @@ In this example, the division operation c = a / b is computed separately, while 
 
 </details>
 
+------------------------------
+
 ### Dynamic Analysis
 
 #### [SNARKProbe: An Automated Security Analysis Framework for zkSNARK Implementations](https://link.springer.com/chapter/10.1007/978-3-031-54773-7_14)
+
+------------------------------
 
 ### Formal Method
 
@@ -408,6 +412,8 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 >Tag: {Type: `formal method`, Target: `Fiat-Shamir Transform`}
 
+------------------------------
+
 ### SMT Solver for Finite Fields
 
 #### [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
@@ -419,6 +425,8 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 ------------------------------
 
 #### [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
+
+------------------------------
 
 ### SoK
 
