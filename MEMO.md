@@ -310,11 +310,21 @@ In this example, the division operation c = a / b is computed separately, while 
 
 <details>
 
-*overview*: This paper introduces CODA, a statically-typed language for building zero-knowledge applications. CODA allows developers to formally specify and verify properties of ZK applications using a powerful refinement type system. A major challenge in verifying ZK applications is reasoning about polynomial equations over large prime fields, which are often beyond the reach of automated theorem provers. CODA addresses this by generating Coq lemmas that can be interactively proven using a tactic library.
+*Overview*: This paper introduces CODA, a statically-typed language for building zero-knowledge applications. CODA allows developers to formally specify and verify properties of ZK applications using a powerful refinement type system. A major challenge in verifying ZK applications is reasoning about polynomial equations over large prime fields, which are often beyond the reach of automated theorem provers. CODA addresses this by generating Coq lemmas that can be interactively proven using a tactic library.
 
 *Experiment*: The authors evaluated CODA on 77 ZK circuits from 9 widely-used libraries and projects in Circom. Because CODA is sound, any bugs in the program will result in unprovable lemmas in Coq. During testing, 6 benchmarks failed to discharge their proof obligations, leading to the discovery of subtle, previously unknown correctness bugs in the original Circom circuits.
 
 </details>
+
+#### [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications (IACR'21)](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
+
+>Tag: `DSL`, `R1CS`, `Formal Method`
+
+<detail>
+
+*Overview*: LEO is a high-level general-purpose programming language designed for circuit synthesis, particularly for zero-knowledge applications on the Aleo blockchain. It specifically targets R1CS arithmetization, with completeness proven using ACL2, an industrial-strength theorem prover. LEO offers two key benefits: it ensures formal verification of applications against their high-level specifications, and it allows anyone to succinctly verify these applications, regardless of their size.
+
+</detail>
 
 ### SMT Solver for Finite Fields
 
@@ -339,8 +349,6 @@ In this example, the division operation c = a / b is computed separately, while 
 #### [Scalable Verification of Zero-Knowledge Protocols](https://www.computer.org/csdl/proceedings-article/sp/2024/313000a133/1Ub23QzVaWA)
 
 #### [The Last Challenge Attack: Exploiting a Vulnerable Implementation of the Fiat-Shamir Transform in a KZG-based SNARK](https://eprint.iacr.org/2024/398)
-
-#### [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
 
 #### [Compositional Formal Verification of Zero-Knowledge Circuits](https://eprint.iacr.org/2023/1278.pdf)
 
