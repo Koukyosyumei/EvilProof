@@ -304,6 +304,8 @@ In this example, the division operation c = a / b is computed separately, while 
 
 </details>
 
+------------------------------
+
 #### [Certifying Zero-Knowledge Circuits with Refinement Types (S&P'24)](https://eprint.iacr.org/2023/547.pdf)
 
 >Tag: {Type: `formal method`, DSL: `New DSL`, Arithmetization: `R1CS`, Target: `circuit`}
@@ -316,6 +318,8 @@ In this example, the division operation c = a / b is computed separately, while 
 
 </details>
 
+------------------------------
+
 #### [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications (IACR'21)](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
 
 >Tag: {Type: `formal method`, DSL: `New DSL`, Arithmetization: `R1CS`, Target: `circuit`}
@@ -325,6 +329,8 @@ In this example, the division operation c = a / b is computed separately, while 
 ***Overview***: LEO is a high-level general-purpose programming language designed for circuit synthesis, particularly for zero-knowledge applications on the Aleo blockchain. It specifically targets R1CS arithmetization, with completeness proven using ACL2, an industrial-strength theorem prover. LEO offers two key benefits: it ensures formal verification of applications against their high-level specifications, and it allows anyone to succinctly verify these applications, regardless of their size.
 
 </details>
+
+------------------------------
 
 #### [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
 
@@ -344,21 +350,31 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 </details>
 
+------------------------------
+
 #### [Compositional Formal Verification of Zero-Knowledge Circuits](https://eprint.iacr.org/2023/1278.pdf)
 
 >Tag: {Type: `formal method`, Target: `circuit`}
+
+------------------------------
 
 #### [Formal Verification of Zero-Knowledge Circuits](https://arxiv.org/pdf/2311.08858)
 
 >Tag: {Type: `formal method`, Target: `circuit`}
 
+------------------------------
+
 #### [Scalable Verification of Zero-Knowledge Protocols (S&P'24)](https://www.computer.org/csdl/proceedings-article/sp/2024/313000a133/1Ub23QzVaWA)
 
 >Tag: {Type: `formal method`, Target: `circuit`}
 
+------------------------------
+
 #### [Automated Analysis of Halo2 Circuits](https://eprint.iacr.org/2023/1051.pdf)
 
 >Tag: {Type: `formal method`, Target: `circuit`}
+
+------------------------------
 
 #### [Bounded Verification for Finite-Field-Blasting](https://link.springer.com/content/pdf/10.1007/978-3-031-37709-9_8.pdf)
 
@@ -374,13 +390,19 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 </details>
 
+------------------------------
+
 #### [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
 
 >Tag: {Type: `formal method`, Target: `verifier`}
 
+------------------------------
+
 #### [Weak Fiat-Shamir Attacks on Modern Proof Systems](https://eprint.iacr.org/2023/691.pdf)
 
 >Tag: {Type: `formal method`, Target: `Fiat-Shamir Transform`}
+
+------------------------------
   
 #### [The Last Challenge Attack: Exploiting a Vulnerable Implementation of the Fiat-Shamir Transform in a KZG-based SNARK](https://eprint.iacr.org/2024/398)
 
@@ -390,7 +412,11 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 #### [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
 
+------------------------------
+
 #### [Satisfiability Modulo Finite Fields](https://link.springer.com/content/pdf/10.1007/978-3-031-37703-7_8.pdf)
+
+------------------------------
 
 #### [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
 
