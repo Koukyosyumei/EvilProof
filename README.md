@@ -8,7 +8,7 @@
 2. [ZKP System Architecture](#2-zkp-system-architecture)
 3. [Implementing a ZKP System: A Practical Example](#3-implementing-a-zkp-system-a-practical-example)
 4. [Security Considerations in ZKP Systems](#4-security-considerations-in-zkp-systems)
-5. [Common Vulnerabilities in ZKP Circuits](#5-common-vulnerabilities-in-zkp-circuits)
+5. [Common Vulnerabilities](#5-common-vulnerabilities)
 6. [Analysis Tools for ZKP Systems](#6-analysis-tools-for-zkp-systems)
 7. [Circom: A Closer Look](#7-circom-a-closer-look)
 8. [Papers](#8-papers)
@@ -211,7 +211,9 @@ When evaluating the security of ZKP systems, three primary concerns emerge:
 - Impact: Violates privacy guarantees, potentially exposing sensitive data.
 
 
-## 5. Common Vulnerabilities in ZKP Circuits
+## 5. Common Vulnerabilities
+
+### Circuit Layer
 
 Most reported ZKP-related vulnerabilities occur in the Circuit Layer and can be categorized as follows:
 
