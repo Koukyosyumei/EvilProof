@@ -538,6 +538,7 @@ There are some papers that propose SMT solvers specially designed to solve const
 |              | Cairo | [Link](https://docs.cairo-lang.org/) |
 | **Curation** | Awesome Zero-Knowledge Proofs Security | [Link](https://github.com/Xor0v0/awesome-zero-knowledge-proofs-security?tab=readme-ov-file) |
 |  | Awesome ZKP Security | [Link](https://github.com/StefanosChaliasos/Awesome-ZKP-Security?tab=readme-ov-file) |
+|  | Awesome Starknet | [Link](https://github.com/keep-starknet-strange/awesome-starknet?tab=readme-ov-file) |
 | **Blogs** | The State of Security Tools for ZKPs | [Link](https://www.zksecurity.xyz/blog/posts/zksecurity-tools/) |
 |           | A beginner's intro to coding zero-knowledge proofs| [Link](https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56) |
 |           | Arithmetization schemes for ZK-SNARKs | [Link](https://blog.lambdaclass.com/arithmetization-schemes-for-zk-snarks/) |
