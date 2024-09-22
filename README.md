@@ -222,8 +222,6 @@ Most reported ZKP-related vulnerabilities occur in the Circuit Layer and can be 
 - Description: Insufficient constraints in the circuit.
 - Impact: Can lead to critical soundness errors, allowing false proofs to be accepted.
 
-You can find some demos in the [circuits](./circuits) folder.
-
 2. **Overconstrained Vulnerabilities**
 
 - Description: Excessive constraints in the circuit.
@@ -233,6 +231,62 @@ You can find some demos in the [circuits](./circuits) folder.
 
 - Description: Errors in the computational part of a circuit.
 - Impact: Can lead to incorrect results or unexpected behavior.
+
+You can find some demos in the [circuits](./circuits) folder.
+
+### Integration Layer
+
+1. **Passing Unchecked Data**
+
+- Description: Implicit constraints on public inputs aren't enforced by the verifier.
+- Impact: Can cause both soundness and completeness issues, undermining the system’s integrity.
+
+2. **Proof Delegation Error**
+
+- Description: Vulnerabilities when proof generation is delegated to untrusted parties.
+- Impact: Could lead to data leaks or other malicious activities.
+
+3. **Proof Composition Error**
+
+- Description: Issues arise when logic is spread across multiple proofs without proper enforcement.
+- Impact: Lack of coordination can result in undefined behaviors
+
+
+4. **ZKP Complementary Logic Error**
+
+- Description: Flaws in logic that supports ZKP, such as the improper management of nullifiers in privacy-focused apps like Tornado Cash.
+- Impact: Can lead to exploits like repeated withdrawals, draining funds due to missing checks.
+
+### Frontend Layer
+
+1. **Incorrect Constraint Compilation**
+
+- Description: Errors during constraint compilation, often due to arithmetization or optimization issues.
+- Impact: Could result in invalid proofs being accepted or valid ones rejected, similar to a compiler bug.
+
+2. **Witness Generation Error**
+
+- Description: Mistakes during witness generation, such as producing invalid witnesses or crashes.
+- Impact: May cause denial of service or incorrect witness generation.
+
+### Backend Layer
+
+1. **Setup Error**
+
+- Description: Issues during the generation of public parameters.
+- Impact: Can severely compromise system integrity if parameters are incorrect or easily compromised.
+
+
+2. **Prover Error**
+
+- Description: Problems with the prover's operation, like accepting invalid witnesses or violating zero-knowledge properties.
+- Impact: May break the proof system's integrity.
+
+
+3. **Unsafe Verifier**
+
+- Description: Missing checks or incorrect operations in the verifier.
+- Impact: Can allow invalid proofs or mathematical errors, jeopardizing the proof system, whether manually or framework-generated.
 
 ## 6. Analysis Tools for ZKP Systems
 
