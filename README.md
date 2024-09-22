@@ -304,18 +304,19 @@ These tools are typically limited to specific vulnerability patterns and support
 
 ### 6.2 Dynamic Analysis and Fuzzing
 
-- SnarkProbe: A security analysis framework for SNARKs that can analyze R1CS-based libraries and applications. It detects various issues such as edge case crashing, errors, and inconsistencies.
+- [SnarkProbe](https://github.com/BARC-Purdue/SNARKProbe): A security analysis framework for SNARKs that can analyze R1CS-based libraries and applications. It detects various issues such as edge case crashing, errors, and inconsistencies. See [SNARKProbe: An Automated Security Analysis Framework for zkSNARK Implementations](#snarkprobe-an-automated-security-analysis-framework-for-zksnark-implementations).
+- [Cairo-Fuzzer](https://github.com/FuzzingLabs/cairo-fuzzer): Cairo/Starknet smart contract fuzzer.
 
 ### 6.3 Formal Verification Tools
 
 These tools provide more rigorous analysis:
 
-- Picus: Uses symbolic execution to verify that Circom circuits are not under-constrained.
-- CIVER: Employs a modular technique to verify properties of Circom circuits using pre- and post-conditions.
-- horus-checker: Performs formal verification of Cairo smart contracts using SMT solvers.
-- Medjai: A symbolic evaluator for Cairo programs.
-- DSLs like Coda and Leo: Support formal verification of circuits through synthesis.
-- Transpiler from Gnark to Lean: Compiles zero-knowledge circuits from Gnark to the Lean theorem prover for formal verification.
+- [Picus](https://github.com/chyanju/Picus): Uses symbolic execution to verify that Circom circuits are not under-constrained. See [Automated Detection of {Under-Constrained} Circuits in {Zero-Knowledge} Proofs](#automated-detection-of-under-constrained-circuits-in-zero-knowledge-proofs-pldi23).
+- [Horus](https://github.com/NethermindEth/horus-checker): Performs formal verification of Cairo smart contracts using SMT solvers.
+- [Medjai](https://github.com/Veridise/Medjai): A symbolic execution tool for Cairo programs.
+- [Code](https://github.com/Veridise/Coda): Certified circom circuits in Coq. See [Certifying Zero-Knowledge Circuits with Refinement Types](#certifying-zero-knowledge-circuits-with-refinement-types-sp24).
+- [Leo](https://github.com/ProvableHQ/leo): A functional, statically-typed programming language built for writing private applications. See [LEO: A Programming Language for Formally Verified, Zero-Knowledge Applications](#leo-a-programming-language-for-formally-verifiedzero-knowledge-applications-iacr21).
+- [Gnark Lean Extractor](https://github.com/reilabs/gnark-lean-extractor?tab=readme-ov-file#gnark-lean-extractor): Compiles zero-knowledge circuits from Gnark to the Lean theorem prover for formal verification.
 
 ## 7. Circom: A Closer Look
 
