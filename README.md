@@ -321,6 +321,16 @@ In this example, the division operation c = a / b is computed separately, while 
 
 >Tag: `{Type: dynamic analysis, Arithmetization: R1CS, Target: compilier}`
 
+<details>
+
+***Overview*** This paper presents an automated security analysis framework for zkSNARKs that scans R1CS-based libraries and applications to detect issues such as edge case crashes, cryptographic operation errors, and protocol inconsistencies. By using dynamic analysis, we trace real-time data and variables across various zkSNARK libraries written in different languages, without requiring manual language-specific adaptations. Custom fuzzing techniques generate valid and invalid R1CS matrices to exercise different code paths in a library, while SMT solvers verify the consistency between user-specified proof equations and the R1CS matrix used in the application.
+
+***Method*** The framework performs two key steps. First, the Constraint Checker uses an SMT solver to compare statement equations with the R1CS matrix, checking for errors in the conversion process. Second, the Branch Model fuzzes the input to generate R1CS matrices and monitors branch coverage during execution, providing feedback to improve fuzzing coverage. The Value Model then re-evaluates protocol calculations, detecting potential cryptographic logic errors caused by unexpected value changes or implementation mistakes. This end-to-end framework, SNARKProbe, assesses both the correctness and security of a zkSNARK library. Unlike traditional fuzzers, SnarkFuzzer can detect both software bugs (such as crashes or overflows) and cryptographic logic errors, which are harder to detect since they do not cause crashes but result in incorrect cryptographic outputs, such as miscomputed ciphertexts.
+
+***Experiment*** This paper focus on two popular zkSNARK protocols, Pinocchio and Groth16, and evaluate four libraries: `libsnark` (C++), `Bellman` (Rust), `arkworks` (Rust), and `gnark` (Go). These libraries are widely used in real-world zkSNARK projects. Although our tool uncovered a few inconsistencies between gadget implementations and protocol specifications, none of these issues were exploitable, new, or of significant concern for disclosure, but they do require careful attention from developers when implementing proofs.
+
+</details>
+
 ------------------------------
 
 ### Formal Method
