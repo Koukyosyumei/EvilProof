@@ -4,7 +4,7 @@
 
 ### 1.1 *Zero-Knowledge Proofs (ZKPs)*
 
-Zero-knowledge proofs are a cryptographic method that allows one party (the prover) to prove to another party (the verifier) that they know a piece of information, without revealing the information itself. ZKPs have three key properties:
+Zero-knowledge proofs are a cryptographic method that allows one party (the prover) to prove to another party (the verifier) that they know a piece of information without revealing it. ZKPs have three fundamental properties:
 
 - *Completeness*: An honest prover can convince an honest verifier of a true statement.
 - *Soundness*: A dishonest prover cannot convince the verifier of a false statement.
@@ -21,7 +21,7 @@ Real-world applications of ZKPs include:
 zk-SNARK (Zero-Knowledge Succinct Non-Interactive Argument of Knowledge) is a popular type of ZKP with two distinguishing features:
 
 - **Succinct**: Proofs are small and quick to verify, regardless of the statement's complexity.
-- **Non-interactive**: The proof requires only one message from prover to verifier.
+- **Non-interactive**: The proof requires only one message from the prover to the verifier.
 
 Notable zk-SNARK variants include:
 
@@ -30,18 +30,31 @@ Notable zk-SNARK variants include:
 
 ### 1.3 Key Concepts in ZKP Implementation
 
-1. *Constraints*
-
-In ZKP systems, statements are represented as constraints rather than instructions. Different implementations support various types of constraints:
-
-- [Circom](https://docs.circom.io/) supports quadratic expressions
-- [Halo2](https://zcash.github.io/halo2/) allows polynomial constraints of any degree
-
-2. *Finite fields*
+1. *Finite fields*
 
 ZKP arithmetic operates in finite fields, with the field size determined by the underlying elliptic curve. This means all operations are computed modulo a specific value.
 
-3. *Arithmetization*
+2. *Constraints* and *Arithmetization*
+
+In ZKP systems, statements to be proved are represented as constraints rather than instructions. Then, arithmetization is a crucial process in zero-knowledge proof systems that transforms computational logic into polynomial constraints. Several tools facilitate the arithmetization process:
+
+- [Circom](https://docs.circom.io/): A compiler that translates high-level DSL into constraints (suppport R1CS). 
+- [Halo2](https://zcash.github.io/halo2/): eDSL translates the specification written in Rust into constraints (support Plonkish).
+- [CARIO](): A zero-knowledge virtual machine designed for arithmetization (support AIR).
+
+While arithmetization is powerful, it does introduce computational overhead:
+
+- Computation time can increase by nearly two orders of magnitude for SNARK-friendly operations.
+- Non-friendly operations may experience even greater overhead.
+
+To address these challenges, several optimization techniques have been developed:
+
+- Lookup tables: Pre-computed values for common operations.
+- SNARK-friendly cryptographic primitives: Algorithms like Rescue, SAVER, and Poseidon.
+- Concurrent proof generation: Parallelizing the proof creation process.
+- Hardware acceleration: Utilizing GPUs for faster computation.
+
+There are several types of arithmetization, such as *R1CS*, *AIR*, and *Plonkish*. RICS only supports linear and quadratic polynomials, while AIR and Plonkish support polynomials with any order. In the case of AIR and Plonkish, we need to get the program's execution trace, establish the relationship between the rows, and interpolate polynomials.
 
 ## 2. ZKP System Architecture
 
@@ -57,11 +70,11 @@ ZKP systems typically consist of four layers:
 At the base of any ZKP system is the Circuit Layer, where developers define the core logic of the proof system. This is achieved using DSLs, such as Circom or Halo2, which allow the creation of circuits that represent computations. These circuits serve two main purposes
 
 1. To compute output values from inputs.
-2. To define constraints on the witness, which is a representation of all intermediate and output values for a given input.
+2. To define constraints on the witness, which represents all intermediate and output values for a given input.
 
 ### 2.2 Frontend Layer
 
-The Frontend Layer acts as the intermediary between the logic defined in the Circuit Layer and the rest of the ZKP system. Its key responsibilities include:
+The Frontend Layer is the intermediary between the logic defined in the Circuit Layer and the rest of the ZKP system. Its key responsibilities include:
 
 - Compilation: Translates the circuit into constraints, typically in a format such as R1CS (Rank-1 Constraint System), which is used to define the relationships between variables in a way that can be proved in zero-knowledge.
 
@@ -74,12 +87,12 @@ For instance, Circom’s compiler can transform a circuit into its corresponding
 The Backend Layer is responsible for the core functionality of the zero-knowledge proof system. This layer is where key cryptographic operations take place. Using tools like the snarkjs toolchain, the following primary tasks are performed:
 
 - Setup: Initializes the proving system, which may include generating cryptographic parameters (for example, with a trusted setup in systems like Groth16).
-- Prove: Generates a proof based on the witness and the circuit's constraints, without revealing any sensitive information.
+- Prove: Generates a proof based on the witness and the circuit's constraints, without revealing sensitive information.
 - Verify: Validates that a given proof is correct and that the input satisfies the circuit’s constraints.
 
 ### 2.4 Integration Layer
 
-t the top, the Integration Layer connects the ZKP system with external applications or platforms. This could involve integrating with smart contracts, decentralized applications, or traditional systems. In a blockchain context, smart contracts might verify proofs and take actions based on the results of the verification.
+At the top, the Integration Layer connects the ZKP system to external applications or platforms. This could involve integrating with smart contracts, decentralized applications, or traditional systems. In a blockchain context, smart contracts might verify proofs and take actions based on the results of the verification.
 
 For example, a smart contract could use an on-chain verifier to:
 
@@ -94,18 +107,18 @@ Let's walk through the process of implementing a simple ZKP system using the `Is
 
 ```
 template IsZero() {
-    signal input in;    // Input signal to check if it's zero or non-zero.
-    signal output out;  // Output signal: 1 if `in == 0`, 0 if `in != 0`.
-    signal inv;         // Inverse of the input when `in != 0`, or 0 when `in == 0`.
-    
-    // Compute the inverse: if `in` is non-zero, `inv` is set to `1/in`, otherwise it's 0.
-    inv <-- in!=0 ? 1/in : 0;
+ signal input in;    // Input signal to check if it's zero or non-zero.
+ signal output out;  // Output signal: 1 if `in == 0`, 0 if `in != 0`.
+ signal inv;         // Inverse of the input when `in != 0`, or 0 when `in == 0`.
+    
+ // Compute the inverse: if `in` is non-zero, `inv` is set to `1/in`, otherwise it's 0.
+ inv <-- in!=0 ? 1/in : 0;
 
-    // Constraint 1: Ensures that if `in != 0`, `out` is 0. If `in == 0`, `out` is 1.
-    out <== -in*inv +1;
+ // Constraint 1: Ensures that if `in != 0`, `out` is 0. If `in == 0`, `out` is 1.
+ out <== -in*inv +1;
 
-    // Constraint 2: Ensures that `in * out == 0`, forcing the output to 1 only when `in == 0`.
-    in*out === 0;
+ // Constraint 2: Ensures that `in * out == 0`, forcing the output to 1 only when `in == 0`.
+ in*out === 0;
 }
 
 // there is no public input
@@ -252,11 +265,11 @@ Circom requires all constraints to be expressed as quadratic equations. However,
 
 ```
 template Divider() {
-    signal input a;
-    signal input b;
-    signal output c;
-    c <-- a/b;
-    a === b * c;
+ signal input a;
+ signal input b;
+ signal output c;
+ c <-- a/b;
+ a === b * c;
 }
 ```
 
@@ -267,7 +280,7 @@ In this example, the division operation c = a / b is computed separately, while 
 ### Static Analysis
 
 #### [Practical Security Analysis of Zero-Knowledge Proof Circuits (USENIX'24)](https://www.cs.utexas.edu/~isil/zkap.pdf)
-  
+  
 >Tag: {Type: `static analysis`, DSL:`circom`, Arithmetization:`R1CS`, Target:`circuit (under-constrainted)`}
 
 <details>
@@ -318,7 +331,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 <details>
 
-***Overview***: This paper introduces CODA, a statically-typed language for building zero-knowledge applications. CODA allows developers to formally specify and verify properties of ZK applications using a powerful refinement type system. A major challenge in verifying ZK applications is reasoning about polynomial equations over large prime fields, which are often beyond the reach of automated theorem provers. CODA addresses this by generating Coq lemmas that can be interactively proven using a tactic library.
+***Overview***: This paper introduces CODA, a statically typed language for building zero-knowledge applications. CODA allows developers to formally specify and verify properties of ZK applications using a powerful refinement type system. A major challenge in verifying ZK applications is reasoning about polynomial equations over large prime fields, which are often beyond the reach of automated theorem provers. CODA addresses this by generating Coq lemmas that can be interactively proven using a tactic library.
 
 ***Experiment***: The authors evaluated CODA on 77 ZK circuits from 9 widely-used libraries and projects in Circom. Because CODA is sound, any bugs in the program will result in unprovable lemmas in Coq. During testing, 6 benchmarks failed to discharge their proof obligations, leading to the discovery of subtle, previously unknown correctness bugs in the original Circom circuits.
 
@@ -332,7 +345,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 <details>
 
-***Overview***: LEO is a high-level general-purpose programming language designed for circuit synthesis, particularly for zero-knowledge applications on the Aleo blockchain. It specifically targets R1CS arithmetization, with completeness proven using ACL2, an industrial-strength theorem prover. LEO offers two key benefits: it ensures formal verification of applications against their high-level specifications, and it allows anyone to succinctly verify these applications, regardless of their size.
+***Overview***: LEO is a high-level, general-purpose programming language designed for circuit synthesis, particularly for zero-knowledge applications on the Aleo blockchain. It specifically targets R1CS arithmetization, with completeness proven using ACL2, an industrial-strength theorem prover. LEO offers two key benefits: it ensures formal verification of applications against their high-level specifications, and it allows anyone to succinctly verify these applications, regardless of their size.
 
 </details>
 
@@ -344,11 +357,11 @@ In this example, the division operation c = a / b is computed separately, while 
 
 <details>
 
-***Overview***: CLAP is the first Rust eDSL with a proof system-agnostic circuit format, designed for extensibility, automatic optimization, and formal assurance of constraint systems. It treats the production of Plonkish constraint systems and witness generators as a semantic-preserving compilation problem, ensuring soundness and completeness to prevent under- or over-constraining errors.
+***Overview***: CLAP is the first Rust eDSL with a proof system-agnostic circuit format designed for extensibility, automatic optimization, and formal assurance of constraint systems. It treats the production of Plonkish constraint systems and witness generators as a semantic-preserving compilation problem, ensuring soundness and completeness to prevent under- or over-constraining errors.
 
 ***Method***: In traditional approaches, circuit developers work in an eDSL and later hand off the constraint system to proof engineers, leading to a disconnect between development and verification. CLAP solves this by integrating the entire process, offering a sound and complete architecture from the start.
 
-CLAP also provides automatic safe optimizations, applying them only after the circuit is fully defined. This avoids premature optimization issues, such as missing constraints, and ensures that optimizations—like removing duplicate checks—are safe and context-aware. Additionally, CLAP allows for circuit reuse by generating arithmetic gates that can be automatically optimized for different proof systems, such as Boojum.
+CLAP also provides automatic safe optimizations, which can be applied only after the circuit is fully defined. This avoids premature optimization issues, such as missing constraints, and ensures that optimizations—like removing duplicate checks—are safe and context-aware. Additionally, CLAP allows for circuit reuse by generating arithmetic gates that can be automatically optimized for different proof systems, such as Boojum.
 
 For custom gates, which trade prover time for verification efficiency, CLAP’s inlining optimizer can flatten complex logic (like a Poseidon hash round) into a custom gate of the required degree, saving time in development and review.
 
@@ -388,9 +401,9 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 <details>
 
-***Overview***: This paper addresses ZKP compiler correctness by partially verifying the field-blasting compiler pass, which translates Boolean and bitvector logic into finite field operations. The contributions of this paper include:
+***Overview***: This paper addresses ZKP compiler correctness by partially verifying the field-blasting compiler pass, translating Boolean and bitvector logic into finite field operations. The contributions of this paper include:
 
-1. Correctness Definition: It introduces a precise correctness definition for ZKP compilers, ensuring that the compiler preserves the soundness and completeness of the underlying ZK proof system. Specifically, if a ZK proof system is specified in a low-level language (L) and compiled from a high-level language (H) to L, the compiler must maintain these properties for statements in H. The definition is also compositional, meaning proving correctness for each compiler pass suffices to prove correctness for the whole compiler.
+1. Correctness Definition: It introduces a precise correctness definition for ZKP compilers, ensuring that the compiler preserves the soundness and completeness of the underlying ZK proof system. Specifically, suppose a ZK proof system is specified in a low-level language (L) and compiled from a high-level language (H) to L. In that case, the compiler must maintain these properties for statements in H. The definition is also compositional, meaning proving correctness for each compiler pass suffices to prove correctness for the whole compiler.
 
 2. Verifiable Field-Blaster Architecture: The paper presents an architecture for a verifiable field-blaster, consisting of a set of encoding rules. It provides verification conditions (VCs) for these rules, and shows that if the VCs hold, the field-blaster is correct. These conditions can be automatically checked (in bounded form), reducing both the initial and ongoing costs of verification.
 
@@ -409,7 +422,7 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 >Tag: {Type: `formal method`, Target: `Fiat-Shamir Transform`}
 
 ------------------------------
-  
+  
 #### [The Last Challenge Attack: Exploiting a Vulnerable Implementation of the Fiat-Shamir Transform in a KZG-based SNARK](https://eprint.iacr.org/2024/398)
 
 >Tag: {Type: `formal method`, Target: `Fiat-Shamir Transform`}
@@ -417,6 +430,8 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 ------------------------------
 
 ### SMT Solver for Finite Fields
+
+There are some papers that propose SMT solvers specially designed to solve constraints in the finite fields.
 
 #### [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
 
@@ -442,8 +457,8 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 | **Category** | **Title** | **Link** |
 |--------------|-----------|----------|
 | **Curation** | Awesome Zero-Knowledge Proofs Security | [Link](https://github.com/Xor0v0/awesome-zero-knowledge-proofs-security?tab=readme-ov-file) |
-|  | Awesome ZKP Security | [Link](https://github.com/StefanosChaliasos/Awesome-ZKP-Security?tab=readme-ov-file) |
+|  | Awesome ZKP Security | [Link](https://github.com/StefanosChaliasos/Awesome-ZKP-Security?tab=readme-ov-file) |
 | **Blogs** | The State of Security Tools for ZKPs | [Link](https://www.zksecurity.xyz/blog/posts/zksecurity-tools/) |
-|           | A beginner's intro to coding zero-knowledge proofs| [Link](https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56) |
-|           | Arithmetization schemes for ZK-SNARKs | [Link](https://blog.lambdaclass.com/arithmetization-schemes-for-zk-snarks/) |
-|           | Medjai: Protecting Cairo code from Bugs| [Link](https://medium.com/veridise/medjai-protecting-cairo-code-from-bugs-d82ec852cd45) |
+|           | A beginner's intro to coding zero-knowledge proofs| [Link](https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56) |
+|           | Arithmetization schemes for ZK-SNARKs | [Link](https://blog.lambdaclass.com/arithmetization-schemes-for-zk-snarks/) |
+|           | Medjai: Protecting Cairo code from Bugs| [Link](https://medium.com/veridise/medjai-protecting-cairo-code-from-bugs-d82ec852cd45) |
