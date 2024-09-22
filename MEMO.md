@@ -305,6 +305,8 @@ In this example, the division operation c = a / b is computed separately, while 
 
 #### [SNARKProbe: An Automated Security Analysis Framework for zkSNARK Implementations](https://link.springer.com/chapter/10.1007/978-3-031-54773-7_14)
 
+>Tag: `{Type: dynamic analysis, Arithmetization: R1CS, Target: compilier}`
+
 ------------------------------
 
 ### Formal Method
@@ -450,7 +452,6 @@ There are some papers that propose SMT solvers specially designed to solve const
 - [SoK: What Don’t We Know? Understanding Security Vulnerabilities in SNARKs (USENIX'24)](https://arxiv.org/pdf/2402.15293)
 
 - [Zero-Knowledge Proof Vulnerability Analysis and Security Auditing](https://eprint.iacr.org/2024/514.pdf)
-
 
 ## 9. Resource
 
