@@ -74,25 +74,23 @@ There are several types of arithmetization, such as *R1CS*, *AIR*, and *Plonkish
 
 ZKP systems typically consist of four layers:
 
-1. **Circuit Layer**: Developers create the logic using DSLs/eDSLs like Circom or Halo2.
-2. **Frontend Layer**: Compiles the circuit into constraints and generates witnesses.
-3. **Backend Layer**: Implements core SNARK functions (Setup, Prove, Verify).
+1. **Circuit Layer**: Developers write a statement to be proved, which is sotimes referred as a *circuit*.
+2. **Frontend Layer**: Compiles the circuit into arithmetic constraints and generates witnesses.
+3. **Backend Layer**: Offers core SNARK operations (Setup, Prove, Verify).
 4. **Integration Layer**: Connects the ZKP system with external applications.
-
+ 
 ### 2.1 Circuit Layer
 
-At the base of any ZKP system is the Circuit Layer, where developers define the core logic of the proof system. This is achieved using DSLs, such as Circom or Halo2, which allow the creation of circuits that represent computations. These circuits serve two main purposes
-
-1. To compute output values from inputs.
-2. To define constraints on the witness, which represents all intermediate and output values for a given input.
+At the base of any ZKP system is the Circuit Layer, where developers define the core logic of the proof system. This can be achieved using DSLs, such as Circom or Halo2, which allow the creation of circuits that represent computations. Another approach is using Zero-Knowledge Virtual Machines like Cario, where the arithmetic circuit represents the loop of fetching
+instructions from memory and successively executing them.
 
 ### 2.2 Frontend Layer
 
-The Frontend Layer is the intermediary between the logic defined in the Circuit Layer and the rest of the ZKP system. Its key responsibilities include:
+The Frontend Layer is the intermediary between the high-level specification defined in the Circuit Layer and the rest of the ZKP system. Its key responsibilities include:
 
-- Compilation: Translates the circuit into constraints, typically in a format such as R1CS (Rank-1 Constraint System), which is used to define the relationships between variables in a way that can be proved in zero-knowledge.
+- Compilation: Translates the circuit into constraints via arithmetization, typically in a format such as R1CS, Plonkish, or AIR, which are used to define the relationships between variables in a way that can be proved in zero-knowledge.
 
-- Witness Generation: Produces a witness based on both public and private inputs. The witness is a set of concrete values that satisfy the circuit's constraints for a given input.
+- Witness Generation: Produces a witness based on both public and private inputs. The witness is a set of concrete values of all intermediate values that satisfy the circuit's constraints for a given input.
 
 For instance, Circom’s compiler can transform a circuit into its corresponding R1CS form and generate the witness based on the provided inputs.
 
