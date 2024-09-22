@@ -463,3 +463,4 @@ There are some papers that propose SMT solvers specially designed to solve const
 |           | A beginner's intro to coding zero-knowledge proofs| [Link](https://dev.to/spalladino/a-beginners-intro-to-coding-zero-knowledge-proofs-c56) |
 |           | Arithmetization schemes for ZK-SNARKs | [Link](https://blog.lambdaclass.com/arithmetization-schemes-for-zk-snarks/) |
 |           | Medjai: Protecting Cairo code from Bugs| [Link](https://medium.com/veridise/medjai-protecting-cairo-code-from-bugs-d82ec852cd45) |
+|           | Moving from Solidity to Cairo | [Link](https://medium.com/starkware/moving-from-solidity-to-cairo-7d44f9723c68) |
