@@ -2,6 +2,18 @@
 
 `PwnableProof` is a collection of vulnerable zero-knowledge proof circuits and their exploits. This repository also serves as an educational resource for developers and security researchers interested in understanding and mitigating vulnerabilities in zero-knowledge proof system.
 
+**Contents**
+
+1. [Core Concepts of ZKP](#1-core-concepts-of-zkp)
+2. [ZKP System Architecture](#2-zkp-system-architecture)
+3. [Implementing a ZKP System: A Practical Example](#3-implementing-a-zkp-system-a-practical-example)
+4. [Security Considerations in ZKP Systems](#4-security-considerations-in-zkp-systems)
+5. [Common Vulnerabilities in ZKP Circuits](#5-common-vulnerabilities-in-zkp-circuits)
+6. [Analysis Tools for ZKP Systems](#6-analysis-tools-for-zkp-systems)
+7. [Circom: A Closer Look](#7-circom-a-closer-look)
+8. [Papers](#8-papers)
+9. [Resource](#9-resource)
+
 ## 1. Core Concepts of ZKP
 
 ### 1.1 *Zero-Knowledge Proofs (ZKPs)*
