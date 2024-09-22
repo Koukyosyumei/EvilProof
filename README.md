@@ -296,9 +296,9 @@ Several tools have been developed to analyze and verify ZKP systems:
 
 These tools rely on pattern matching and heuristics to identify potential issues:
 
-- [Circomspect](https://github.com/trailofbits/circomspect): Static analyzer for Circom
-- ZKAP: Another static analyzer for Circom
-- halo2-analyzer: Static analyzer for Halo2
+- [Circomspect](https://github.com/trailofbits/circomspect): Static analyzer for Circom.
+- [ZKAP](https://github.com/whbjzzwjxq/ZKAP?tab=readme-ov-file): Static analyzer for Circom. See [Practical Security Analysis of Zero-Knowledge Proof Circuits](#practical-security-analysis-of-zero-knowledge-proof-circuits-usenix24).
+- [halo2-analyzer](https://github.com/quantstamp/halo2-analyzer): Static analyzer for Halo2. See [Automated Analysis of Halo2 Circuits](#automated-analysis-of-halo2-circuits).
 
 These tools are typically limited to specific vulnerability patterns and support only particular DSLs or eDSLs.
 
