@@ -222,6 +222,8 @@ Most reported ZKP-related vulnerabilities occur in the Circuit Layer and can be 
 - Description: Insufficient constraints in the circuit.
 - Impact: Can lead to critical soundness errors, allowing false proofs to be accepted.
 
+You can find some demos in the [circuit](./circuit) folder.
+
 2. **Overconstrained Vulnerabilities**
 
 - Description: Excessive constraints in the circuit.
