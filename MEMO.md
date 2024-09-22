@@ -281,7 +281,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 #### [Practical Security Analysis of Zero-Knowledge Proof Circuits (USENIX'24)](https://www.cs.utexas.edu/~isil/zkap.pdf)
   
->Tag: {Type: `static analysis`, DSL:`circom`, Arithmetization:`R1CS`, Target:`circuit (under-constrainted)`}
+>Tag: `{Type: static analysis, DSL:circom, Arithmetization:R1CS, Target:circuit (under-constrainted)}`
 
 <details>
 
@@ -313,7 +313,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 #### [Automated Detection of Under-Constrained Circuits in Zero-Knowledge Proofs (PLDI'23)](https://dl.acm.org/doi/pdf/10.1145/3591282)
 
->Tag: {Type: `formal method`, DSL:`circom`, Arithmetization:`R1CS`, Target:`circuit (under-constrainted)`, Others:`[SMT-solver]`}
+>Tag: `{Type: formal method, DSL:circom, Arithmetization:R1CS, Target:circuit (under-constrainted), Others:[SMT-solver]}`
 
 <details>
 
@@ -329,7 +329,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 #### [Certifying Zero-Knowledge Circuits with Refinement Types (S&P'24)](https://eprint.iacr.org/2023/547.pdf)
 
->Tag: {Type: `formal method`, DSL: `New DSL`, Arithmetization: `R1CS`, Target: `circuit`}
+>Tag: `{Type: formal method, DSL: New DSL, Arithmetization: R1CS, Target: circuit}`
 
 <details>
 
@@ -343,7 +343,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 #### [LEO: A Programming Language for Formally Verified,Zero-Knowledge Applications (IACR'21)](https://docs.zkproof.org/pages/standards/accepted-workshop4/proposal-leo.pdf)
 
->Tag: {Type: `formal method`, DSL: `New DSL`, Arithmetization: `R1CS`, Target: `circuit`}
+>Tag: `{Type: formal method, DSL: New DSL, Arithmetization: R1CS, Target: circuit}`
 
 <details>
 
@@ -355,7 +355,7 @@ In this example, the division operation c = a / b is computed separately, while 
 
 #### [CLAP: a Semantic-Preserving Optimizing eDSL for Plonkish Proof Systems](https://arxiv.org/pdf/2405.12115)
 
->Tag: {Type: `formal method`, DSL: `New DSL`, Arithmetization: `Plonkish`, Target:`circuit`}
+>Tag: `{Type: formal method, DSL: New DSL, Arithmetization: Plonkish, Target:circuit}`
 
 <details>
 
@@ -375,31 +375,31 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 #### [Compositional Formal Verification of Zero-Knowledge Circuits](https://eprint.iacr.org/2023/1278.pdf)
 
->Tag: {Type: `formal method`, Target: `circuit`}
+>Tag: `{Type: formal method, Target: circuit}`
 
 ------------------------------
 
 #### [Formal Verification of Zero-Knowledge Circuits](https://arxiv.org/pdf/2311.08858)
 
->Tag: {Type: `formal method`, Target: `circuit`}
+>Tag: `{Type: formal method, Target: circuit}`
 
 ------------------------------
 
 #### [Scalable Verification of Zero-Knowledge Protocols (S&P'24)](https://www.computer.org/csdl/proceedings-article/sp/2024/313000a133/1Ub23QzVaWA)
 
->Tag: {Type: `formal method`, Target: `circuit`}
+>Tag: `{Type: formal method, Target: circuit}`
 
 ------------------------------
 
 #### [Automated Analysis of Halo2 Circuits](https://eprint.iacr.org/2023/1051.pdf)
 
->Tag: {Type: `formal method`, Target: `circuit`}
+>Tag: `{Type: formal method, Target: circuit}`
 
 ------------------------------
 
 #### [Bounded Verification for Finite-Field-Blasting](https://link.springer.com/content/pdf/10.1007/978-3-031-37709-9_8.pdf)
 
->Tag: {Type: `formal method`, Target: `compilier`}
+>Tag: `{Type: formal method, Target: compilier}`
 
 <details>
 
@@ -415,19 +415,19 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 #### [The Ouroboros of ZK: Why Verifying the Verifier Unlocks Longer-Term ZK Innovation](https://eprint.iacr.org/2024/768.pdf)
 
->Tag: {Type: `formal method`, Target: `verifier`}
+>Tag: `{Type: formal method, Target: verifier}`
 
 ------------------------------
 
 #### [Weak Fiat-Shamir Attacks on Modern Proof Systems](https://eprint.iacr.org/2023/691.pdf)
 
->Tag: {Type: `formal method`, Target: `Fiat-Shamir Transform`}
+>Tag: `{Type: formal method, Target: Fiat-Shamir Transform}`
 
 ------------------------------
   
 #### [The Last Challenge Attack: Exploiting a Vulnerable Implementation of the Fiat-Shamir Transform in a KZG-based SNARK](https://eprint.iacr.org/2024/398)
 
->Tag: {Type: `formal method`, Target: `Fiat-Shamir Transform`}
+>Tag: `{Type: formal method, Target: Fiat-Shamir Transform}`
 
 ------------------------------
 
