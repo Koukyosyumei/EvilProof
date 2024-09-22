@@ -449,15 +449,11 @@ For custom gates, which trade prover time for verification efficiency, CLAP’s 
 
 There are some papers that propose SMT solvers specially designed to solve constraints in the finite fields.
 
-#### [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
+- [An SMT-LIB Theory of Finite Fields](https://ceur-ws.org/Vol-3725/paper3.pdf)
 
-------------------------------
+- [Satisfiability Modulo Finite Fields](https://link.springer.com/content/pdf/10.1007/978-3-031-37703-7_8.pdf)
 
-#### [Satisfiability Modulo Finite Fields](https://link.springer.com/content/pdf/10.1007/978-3-031-37703-7_8.pdf)
-
-------------------------------
-
-#### [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
+- [SMT Solving over Finite Field Arithmetic](https://arxiv.org/pdf/2305.00028)
 
 ------------------------------
 
@@ -471,6 +467,8 @@ There are some papers that propose SMT solvers specially designed to solve const
 
 | **Category** | **Title** | **Link** |
 |--------------|-----------|----------|
+| **Documentation** | Circom | [Link](https://docs.circom.io/) |
+|              | Cairo | [Link](https://docs.cairo-lang.org/) |
 | **Curation** | Awesome Zero-Knowledge Proofs Security | [Link](https://github.com/Xor0v0/awesome-zero-knowledge-proofs-security?tab=readme-ov-file) |
 |  | Awesome ZKP Security | [Link](https://github.com/StefanosChaliasos/Awesome-ZKP-Security?tab=readme-ov-file) |
 | **Blogs** | The State of Security Tools for ZKPs | [Link](https://www.zksecurity.xyz/blog/posts/zksecurity-tools/) |
