@@ -547,4 +547,5 @@ There are some papers that propose SMT solvers specially designed to solve const
 |           | Medjai: Protecting Cairo code from Bugs| [Link](https://medium.com/veridise/medjai-protecting-cairo-code-from-bugs-d82ec852cd45) |
 |           | Moving from Solidity to Cairo | [Link](https://medium.com/starkware/moving-from-solidity-to-cairo-7d44f9723c68) |
 |           | Under-constrained computation, a new kind of bug | [Link](https://consensys.io/diligence/blog/2022/01/under-constrained-computation-a-new-kind-of-bug/) |
+|           | Cairo language and Starknet: Why do they exist?  | [Link](https://shiftmag.dev/cairo-starknet-blockchain-2156/) |
 
