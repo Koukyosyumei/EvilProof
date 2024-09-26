@@ -70,6 +70,77 @@ To address these challenges, several optimization techniques have been developed
 
 There are several types of arithmetization, such as *R1CS*, *AIR*, and *Plonkish*. RICS only supports linear and quadratic polynomials, while AIR and Plonkish support polynomials with any order. In the case of AIR and Plonkish, we need to get the program's execution trace, establish the relationship between the rows, and interpolate polynomials.
 
+
+### 1.4. Format of Arithmetization
+
+#### 1.4.1 AIR
+
+AIR stands for Algebraic Intermediate Representation and consists of three main elements:
+
+- *Execution Trace*: This is a two-dimensional matrix where each row represents the state of a computation at a specific time point, and each column corresponds to an algebraic register tracked throughout the computation steps.
+
+- *Transition Constraints*: These define algebraic relations between two or more rows of the execution trace, ensuring the correct evolution of the computation's state.
+
+- *Boundary Constraints*: These enforce equality between specific cells of the execution trace and a set of constant values, effectively defining the input and output values of the computation.
+
+AIR translates computational integrity statements into relations and properties of polynomials. It does this by expressing constraints as polynomials composed over the execution trace. This process allows complex computations to be represented in a form that can be efficiently verified using zero-knowledge proof systems.
+
+Let's look at some simple examples to illustrate how AIR works:
+
+**Example 1: Sum Constraint**
+
+Consider a simple computation where we want to calculate the sum of the first n integers. We can represent this using AIR as follows:
+
+*1. Execution Trace:*
+
+- Column 1: Current number (i)
+- Column 2: Running sum (s)
+
+*2. Transition Constraint:*
+
+- $s_{i+1} = s_{i} + (i + 1)$
+
+*3. Boundary Constraints:*
+
+- Initial state: $s_0 = 0, i_0 = 0$
+- FInal state: $i_n = n$
+
+|Step|	Current Number (i)|	Running Sum (s)|
+|---|---|---|
+|0|	0|	0|
+|1|	1|	1|
+|2|	2|	3|
+|3|	3|	6|
+|...|	...|	...|
+|n|	n|	(n * (n + 1)) / 2|
+
+**Example 2: Fibonacci Sequence**
+
+For a slightly more complex example, let's consider the Fibonacci sequence:
+
+*1. Execution Trace:*
+
+- Column 1: F(n-1)
+- Column 2: F(n)
+
+*2. Transition Constraint:*
+
+- $F(n + 1) = F(n) + F(n - 1)$
+
+*3. Boundary Constraints:*
+
+- Initial State: $F(0) = 0, F(1) = 1$
+
+|Step|	F(n-1)|	F(n)|
+|---|---|---|
+|0|	0|	1|
+|1|	1|	1|
+|2|	1|	2|
+|3|	2|	3|
+|4|	3|	5|
+|...|	...|	...|
+
+
 ## 2. ZKP System Architecture
 
 ZKP systems typically consist of four layers:
@@ -539,6 +610,7 @@ There are some papers that propose SMT solvers specially designed to solve const
 | **Curation** | Awesome Zero-Knowledge Proofs Security | [Link](https://github.com/Xor0v0/awesome-zero-knowledge-proofs-security?tab=readme-ov-file) |
 |  | Awesome ZKP Security | [Link](https://github.com/StefanosChaliasos/Awesome-ZKP-Security?tab=readme-ov-file) |
 |  | Awesome Starknet | [Link](https://github.com/keep-starknet-strange/awesome-starknet?tab=readme-ov-file) |
+|  | Awesome Cairo               | [Link](https://github.com/auditless/awesome-cairo?tab=readme-ov-file) |
 | **Audits**| zksecurity | [Link](https://www.zksecurity.xyz/reports/) |
 |           | nullity00/zk-security-reviews | [Link](https://github.com/nullity00/zk-security-reviews) |
 | **Blogs** | The State of Security Tools for ZKPs | [Link](https://www.zksecurity.xyz/blog/posts/zksecurity-tools/) |
@@ -546,4 +618,5 @@ There are some papers that propose SMT solvers specially designed to solve const
 |           | Arithmetization schemes for ZK-SNARKs | [Link](https://blog.lambdaclass.com/arithmetization-schemes-for-zk-snarks/) |
 |           | Medjai: Protecting Cairo code from Bugs| [Link](https://medium.com/veridise/medjai-protecting-cairo-code-from-bugs-d82ec852cd45) |
 |           | Moving from Solidity to Cairo | [Link](https://medium.com/starkware/moving-from-solidity-to-cairo-7d44f9723c68) |
+|           | An Introduction to AIR        | [Link](https://threesigma.xyz/blog/an-introduction-to-air) |
 
