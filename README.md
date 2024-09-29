@@ -620,4 +620,5 @@ There are some papers that propose SMT solvers specially designed to solve const
 |           | Moving from Solidity to Cairo | [Link](https://medium.com/starkware/moving-from-solidity-to-cairo-7d44f9723c68) |
 |           | An Introduction to AIR        | [Link](https://threesigma.xyz/blog/an-introduction-to-air) |
 |           | Under-constrained computation, a new kind of bug | [Link](https://diligence.consensys.io/blog/2022/01/under-constrained-computation-a-new-kind-of-bug/) |    
+| | Anatomy of a STARK | [Link](https://neptune.cash/learn/stark-anatomy/) |
 
