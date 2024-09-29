@@ -621,4 +621,5 @@ There are some papers that propose SMT solvers specially designed to solve const
 |           | An Introduction to AIR        | [Link](https://threesigma.xyz/blog/an-introduction-to-air) |
 |           | Under-constrained computation, a new kind of bug | [Link](https://diligence.consensys.io/blog/2022/01/under-constrained-computation-a-new-kind-of-bug/) |    
 | | Anatomy of a STARK | [Link](https://neptune.cash/learn/stark-anatomy/) |
+| **Courses** | STARK 101 | [Link](https://starkware.co/stark-101/) |
 
