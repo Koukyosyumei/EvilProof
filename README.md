@@ -622,6 +622,7 @@ There are some papers that propose SMT solvers specially designed to solve const
 |           | Under-constrained computation, a new kind of bug | [Link](https://diligence.consensys.io/blog/2022/01/under-constrained-computation-a-new-kind-of-bug/) |    
 | | Anatomy of a STARK | [Link](https://neptune.cash/learn/stark-anatomy/) |
 | | Noir Explained: Features and Examples | [Link](https://oxor.io/blog/2024-06-18-noir-explained-features-and-examples/) |
+|             | Discovering and Fixing a Critical Vulnerability in Polygon zkEVM | [Link](https://blog.verichains.io/p/discovering-and-fixing-a-critical) |
 | **Courses** | STARK 101 | [Link](https://starkware.co/stark-101/) |
 |             | ZK Whiteboard | [Link](https://zkhack.dev/whiteboard/) |
 
