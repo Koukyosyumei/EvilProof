@@ -626,4 +626,5 @@ There are some papers that propose SMT solvers specially designed to solve const
 |             | Cairo Security Flaws | [Link](https://oxor.io/blog/2024-08-16-cairo-security-flaws/#security-practices) |
 | **Courses** | STARK 101 | [Link](https://starkware.co/stark-101/) |
 |             | ZK Whiteboard | [Link](https://zkhack.dev/whiteboard/) |
+|             | [MIT IAP 2023] Modern Zero Knowledge Cryptography | [Link](https://zkiap.com/) |
 
