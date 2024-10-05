@@ -624,6 +624,7 @@ There are some papers that propose SMT solvers specially designed to solve const
 | | Noir Explained: Features and Examples | [Link](https://oxor.io/blog/2024-06-18-noir-explained-features-and-examples/) |
 |             | Discovering and Fixing a Critical Vulnerability in Polygon zkEVM | [Link](https://blog.verichains.io/p/discovering-and-fixing-a-critical) |
 |             | Cairo Security Flaws | [Link](https://oxor.io/blog/2024-08-16-cairo-security-flaws/#security-practices) |
+|             | Building zk-SNARKs (volume 1) | [Link](https://medium.com/iovlabs-innovation-stories/building-zk-snarks-volume-1-8e8bd4e4a012) |
 | **Courses** | STARK 101 | [Link](https://starkware.co/stark-101/) |
 |             | ZK Whiteboard | [Link](https://zkhack.dev/whiteboard/) |
 |             | [MIT IAP 2023] Modern Zero Knowledge Cryptography | [Link](https://zkiap.com/) |
