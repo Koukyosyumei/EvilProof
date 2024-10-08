@@ -625,6 +625,7 @@ There are some papers that propose SMT solvers specially designed to solve const
 |             | Discovering and Fixing a Critical Vulnerability in Polygon zkEVM | [Link](https://blog.verichains.io/p/discovering-and-fixing-a-critical) |
 |             | Cairo Security Flaws | [Link](https://oxor.io/blog/2024-08-16-cairo-security-flaws/#security-practices) |
 |             | Building zk-SNARKs (volume 1) | [Link](https://medium.com/iovlabs-innovation-stories/building-zk-snarks-volume-1-8e8bd4e4a012) |
+|             | The RareSkills Book of Zero Knowledge | [Link](https://www.rareskills.io/zk-book) |
 | **Courses** | STARK 101 | [Link](https://starkware.co/stark-101/) |
 |             | ZK Whiteboard | [Link](https://zkhack.dev/whiteboard/) |
 |             | [MIT IAP 2023] Modern Zero Knowledge Cryptography | [Link](https://zkiap.com/) |
